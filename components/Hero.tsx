@@ -76,7 +76,8 @@ const Hero = (props: Props) => {
             <span className="relative">
               &nbsp;creativity
               <svg 
-                className="absolute left-2 -bottom-2" 
+                className="absolute left-1 -bottom-2 h-[14px] w-[120px]
+                lg:w-[220px] md:w-[140px] sm:w-[120px]" 
                 viewBox="0 0 229 14" fill="none" xmlns="http://www.w3.org/2000/svg"
               >
                 <motion.path 
