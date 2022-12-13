@@ -6,6 +6,7 @@ import Hero from '../components/Hero'
 import styles from '../styles/Home.module.css'
 import { useInView } from 'framer-motion'
 import { useEffect, useState, useRef } from 'react'
+import Skills from '../components/Skills'
 
 export default function Home() {
   const heroRef = useRef(null);
@@ -20,7 +21,11 @@ export default function Home() {
   }, [heroInView]);
 
   return (
-    <div className="relative bg-[#eeeeee] text-gray-800 h-screen overflow-x-hidden overflow-y-scroll z-0">
+    <div 
+      className="relative bg-[#eeeeee] text-gray-800 h-screen overflow-x-hidden overflow-y-scroll z-0
+      scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-[#cccccc] scrollbar-track-[#eeeeee]
+      dark:scrollbar-thumb-[#cccccc] dark:scrollbar-track-[#eeeeee]
+    ">
       <Head>
         <title>Exhibition | seancfong</title>
       </Head>
@@ -38,9 +43,10 @@ export default function Home() {
         <About />
       </section>
 
-      {/* Experience */}
-
       {/* Skills */}
+      {/* <section id="skills">
+        <Skills />
+      </section> */}
     
       {/* Projects */}
 

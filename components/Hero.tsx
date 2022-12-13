@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import BackgroundCircles from './BackgroundCircles'
 import { useAnimation, motion } from 'framer-motion'
+import useWindowSize from './hooks/useWindowSize'
 
 type Props = {}
 
@@ -26,6 +27,8 @@ const Hero = (props: Props) => {
   const plateAnimation = useAnimation();
   const creativeAnimation = useAnimation();
 
+  const windowSize = useWindowSize();
+
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
     const moveX = clientX - window.innerWidth / 2;
@@ -49,7 +52,7 @@ const Hero = (props: Props) => {
 
   return (
     <div 
-      className="relative -mt-20 h-screen flex flex-col space-y-8 items-center justify-center 
+      className="relative mt-[-2.5rem] mb-[3rem] h-screen flex flex-col space-y-8 items-center justify-center 
       overflow-y-hidden overflow-x-hidden"
       onMouseMove={e => handleMouseMove(e)}
     >
@@ -151,7 +154,8 @@ const Hero = (props: Props) => {
                   ease: "easeInOut"
               }}
             >
-              Sean Collan Fong
+              { ((windowSize.width ?? 0) > 500) && (<>Sean Collan Fong</>)}
+              { ((windowSize.width ?? 0) <= 500) && (<>Sean C Fong</>)}
             </motion.h1>
           </div>
           <svg 

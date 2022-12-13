@@ -11,7 +11,7 @@ const BackgroundCircles = (props: Props) => {
         }}
         animate={{
             scale: [1, 1.2],
-            opacity: [0.9, 1, 0.8, 0.45],
+            opacity: [0.9, 1, 0.8, 0.6],
         }}
         transition={{
             duration: 2,

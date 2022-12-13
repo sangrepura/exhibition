@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useAnimationControls } from 'framer-motion';
 import Link from 'next/link';
+import useWindowSize from './hooks/useWindowSize'
 
 type Props = {mode: boolean};
-
-function getWindowSize() {
-  if (typeof window !== "undefined") {
-    const {innerWidth, innerHeight} = window;
-    return {innerWidth, innerHeight};
-  }
-}
 
 const navIconVariants = {
   idle: { rotate: 0 },
@@ -36,31 +30,18 @@ const Header = (props: Props) => {
   const heroVisible = props.mode;
 
   // get states of window and navbar
-  const [windowSize, setWindowSize] = useState(getWindowSize());
+  const windowSize = useWindowSize();
   const [showNav, setShowNav] = useState(true);
 
   // controls for navbar
   const navIconControls = useAnimationControls();
 
-  // change window resizing
-  useEffect(() => {
-    function handleWindowResize() {
-      setWindowSize(getWindowSize());
-    }
-
-    window.addEventListener('resize', handleWindowResize);
-
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  }, []);
-
   // checks values of window size to see if navbar should be shown
   useEffect(() => {
-    if (windowSize)
-      setShowNav(windowSize.innerWidth > 768);
+    if (windowSize.width)
+      setShowNav(windowSize.width > 768);
 
-  }, [windowSize]);
+  }, [windowSize.width]);
 
 
   return (
@@ -174,9 +155,9 @@ const Header = (props: Props) => {
                         }}
                         className="px-2 bg-opacity-30 rounded-md bg-sea md:bg-transparent md:rounded-none"
                       >
-                        <Link href="/#hero" className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-500 font-light leading-8">
+                        <a href="https://www.linkedin.com/in/seancfong/"  target='_blank' className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-500 font-light leading-8">
                           linkedin
-                        </Link>
+                        </a>
                       </motion.div>
                     </div>
                   </div>
