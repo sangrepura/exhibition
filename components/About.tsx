@@ -10,37 +10,59 @@ const About = (props: Props) => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5 }} 
-      className="min-h-[100vh] max-w-7xl relative flex flex-col px-6 pb-8
+      className="min-h-screen max-w-9xl relative flex flex-col px-10 pb-8
       justify-evenly mx-auto items-center 
-      md:text-left md:flex-row-reverse
+      lg:flex-row-reverse lg:justify-center
       ">
       {/* Image div */}
-      <div className="relative self-start mt-20 mb-6">
+      <div 
+        className="relative self-start mt-20 mb-6 sm:-mb-10 
+        xl:ml-10
+        lg:ml-5 lg:mt-[-1rem]
+        md:self-center md:ml-[20rem] 
+      ">
         <motion.img 
           src="about_img.png" alt="About Image"
-          className="max-h-[50vh] object-cover rounded-[20px]
-          sm:w-[50vw] sm:h-[50vw]
-          w-[60vw] h-[60vw] 
+          className="max-h-[50vh] object-cover rounded-[20px] shadow-about
+          xl:w-[320px] xl:h-[320px]
+          lg:w-[300px] lg:h-[300px]
+          md:w-[30vw] md:h-[30vw]
+          sm:w-[40vw] sm:h-[40vw]
+          w-[55vw] h-[55vw] 
         ">
         </motion.img>
       </div>
       {/* Text container div */}
-      <div className="z-10 w-[100%] h-[70%] relative pt-7">
+      <div 
+        className="z-10 min-h-[70%] relative pt-7
+        xl:w-[53rem]
+        lg:w-[44rem]
+        md:w-[80%] 
+        w-[100%]
+      ">
         {/* Header div */}
-        <div className="absolute pl-2 pr-32 rounded-b-[20px] bg-[#eeeeee] bg-opacity-50 shadow-about
-        sm:w-[50vw] sm:top-[-5rem]
-        h-[50px] w-[60vw] top-[-4rem]
+        <div className="absolute pl-2 pr-32 rounded-b-[20px]
+        lg:left-[4rem] 
+        md:w-0
+        sm:w-[40vw] sm:top-[-4rem]
+        h-[50px] w-[55vw] top-[-4rem]
         ">
           <h3 
-            className="uppercase w-[100%] font-poppins tracking-[0.1em] leading-[100px] text-[60px] text-center
-            
+            className="uppercase w-[100%] font-poppins tracking-[0.1em] leading-[100px] text-center
+            sm:text-[60px]
+            text-[50px]
           ">
               Hello,
           </h3>
         </div>
 
         {/* Paragraphs */}
-        <div className="pl-5 text-right font-helvetica-light text-[26px] leading-[36px] font-normal">
+        <div className="pl-5 text-right font-poppins font-light
+          xl:pl-[7rem]
+          lg:text-[26px] lg:leading-[36px] lg:pl-[7rem] 
+          sm:text-2xl
+          text-xl
+        ">
           <p>
             I am an undergraduate Computer Science student at&nbsp;
             <span className="font-bold text-sunset">University of California, Irvine</span>. 

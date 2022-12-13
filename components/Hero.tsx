@@ -71,8 +71,8 @@ const Hero = (props: Props) => {
           xl:w-[330px] xl:h-[460px] xl:-top-32 xl:right-[1rem]
           lg:w-[280px] lg:h-[320px] lg:top-[-4rem] lg:right-[5rem] 
           md:w-[250px] md:h-[270px] md:top-[-4rem] md:right-[3rem] 
-          sm:w-[250px] sm:h-[270px] sm:top-[-2rem] sm:right-[6rem] 
-          w-[200px] h-[300px] right-[1rem] -top-[4rem]
+          sm:w-[260px] sm:h-[300px] sm:top-[-4rem] sm:right-[6rem] 
+          w-[240px] h-[320px] right-[2rem] -top-[6rem]
         "/>
         
         <motion.div 
@@ -81,8 +81,8 @@ const Hero = (props: Props) => {
           xl:right-[-1rem] xl:top-[-9.5rem] xl:w-[490px] xl:h-[510px]
           lg:right-[3rem] lg:top-[-6rem] lg:w-[440px] lg:h-[610px]  
           md:right-[1rem] md:top-[-6rem] md:w-[370px] md:h-[530px]  
-          sm:right-[4rem] sm:top-[-4rem] sm:w-[370px] sm:h-[580px]  
-          w-[220px] h-[510px] right-[3rem] top-[-2rem] 
+          sm:right-[4rem] sm:top-[-6rem] sm:w-[370px] sm:h-[620px]  
+          w-[250px] h-[560px] right-[4rem] top-[-2rem] 
         "/>
 
         <motion.div 

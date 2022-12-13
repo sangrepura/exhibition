@@ -4,16 +4,10 @@
 
 @font-face {
     font-family: "Helvetica";
-    src: url("../asset/Helvetica/Helvetica.ttf");
+    src: url("../fonts/Helvetica/Helvetica.ttf");
 }
   
 @font-face {
     font-family: "Helvetica Light";
-    src: url("../asset/Helvetica/Helvetica-Light.ttf");
-}
-
-@layer base {
-    html {
-        @apply scroll-smooth;
-    }
+    src: url("../fonts/Helvetica/Helvetica-Light.ttf");
 }

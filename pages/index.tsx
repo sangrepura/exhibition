@@ -12,19 +12,11 @@ export default function Home() {
   const heroRef = useRef(null);
   const heroInView = useInView(heroRef);
 
-  useEffect(() => {
-    if (heroInView) {
-      console.log('hero in view'); 
-    } else {
-      console.log('hero not in view');
-    }
-  }, [heroInView]);
-
   return (
     <div 
       className="relative bg-[#eeeeee] text-gray-800 h-screen overflow-x-hidden overflow-y-scroll z-0
-      scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-[#cccccc] scrollbar-track-[#eeeeee]
-      dark:scrollbar-thumb-[#cccccc] dark:scrollbar-track-[#eeeeee]
+      scrollbar-thin scrollbar-thumb-rounded-full 
+    scrollbar-thumb-[#cccccc] scrollbar-track-[#eeeeee] hover:scrollbar-thumb-[#aaaaaa]
     ">
       <Head>
         <title>Exhibition | seancfong</title>
