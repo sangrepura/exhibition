@@ -19,7 +19,8 @@ module.exports = {
         'sea': '#b4c1c5', 
       },
       boxShadow: {
-        'about': '15px 20px 40px -10px rgba(216, 178, 110, 0.4)',
+        'hero': '-3px 3px 30px -5px rgba(216, 178, 110, 0.2)',
+        'about': '15px 20px 40px -10px rgba(216, 178, 110, 0.3)',
       },
     },
   },

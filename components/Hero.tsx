@@ -67,7 +67,7 @@ const Hero = (props: Props) => {
         <motion.img 
           animate={imgAnimation}
           src="/sean_hero.png" alt="Sean Image" 
-          className="z-20 absolute mx-auto rounded-[10px] object-cover drop-shadow-md
+          className="z-20 absolute mx-auto rounded-[10px] object-cover shadow-hero
           xl:w-[330px] xl:h-[460px] xl:-top-32 xl:right-[1rem]
           lg:w-[280px] lg:h-[320px] lg:top-[-4rem] lg:right-[5rem] 
           md:w-[250px] md:h-[270px] md:top-[-4rem] md:right-[3rem] 

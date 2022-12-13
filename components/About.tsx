@@ -1,29 +1,60 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
 
 type Props = {}
 
 const About = (props: Props) => {
+  const panelAnimation = useAnimation();
+  const imgAnimation = useAnimation();
+  const circleAnimation = useAnimation();
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    const moveX = clientX - window.innerWidth / 2;
+    const moveY = clientY - window.innerHeight / 2;
+    const imgOffset = -0.01;
+    const panelOffset = 0.01;
+    const circleOffset = -0.03;
+    imgAnimation.start({
+      x: moveX * imgOffset,
+      y: moveY * imgOffset,
+    })
+    panelAnimation.start({
+      x: moveX * panelOffset,
+      y: moveY * panelOffset,
+    })
+    circleAnimation.start({
+      x: moveX * circleOffset * 1.5,
+      y: moveY * circleOffset * 0.6,
+    })
+  };
+
   return (
     // Page section container div
     <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.5 }} 
-      className="min-h-screen max-w-9xl relative flex flex-col px-10 pb-8
+      onMouseMove={e => handleMouseMove(e)}
+      initial={{ opacity: 0.5, scale: 0.96 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1.2, ease: "easeInOut" }} 
+      viewport={{ once: true}}
+      className="min-h-[100vh] max-w-9xl relative flex flex-col px-10 pb-8
       justify-evenly mx-auto items-center 
       lg:flex-row-reverse lg:justify-center
       ">
+      
       {/* Image div */}
       <div 
         className="relative self-start mt-20 mb-6 sm:-mb-10 
-        xl:ml-10
-        lg:ml-5 lg:mt-[-1rem]
-        md:self-center md:ml-[20rem] 
+        xl:w-[320px] xl:h-[320px] xl:ml-10
+        lg:w-[300px] lg:h-[300px] lg:ml-5 lg:mt-[-1rem]
+        md:w-[30vw] md:h-[30vw] md:self-center md:ml-[20rem] 
+        sm:w-[40vw] sm:h-[40vw]
+        w-[55vw] h-[55vw] 
       ">
         <motion.img 
+          animate={imgAnimation}
           src="about_img.png" alt="About Image"
-          className="max-h-[50vh] object-cover rounded-[20px] shadow-about
+          className="z-20 absolute top-0 left-0 max-h-[50vh] object-cover rounded-[20px] shadow-about
           xl:w-[320px] xl:h-[320px]
           lg:w-[300px] lg:h-[300px]
           md:w-[30vw] md:h-[30vw]
@@ -66,7 +97,7 @@ const About = (props: Props) => {
           <p>
             I am an undergraduate Computer Science student at&nbsp;
             <span className="font-bold text-sunset">University of California, Irvine</span>. 
-            I strive to push the limits for creating innovative 
+            I strive to push past the limits of creating innovative 
             and practical applications for everyone to use.
           </p>
           <br />
@@ -78,6 +109,27 @@ const About = (props: Props) => {
           </p>
         </div>
       </div>
+
+      <motion.div 
+        animate={panelAnimation}
+        className="absolute bg-cloud drop-shadow-xl bg-opacity-40
+        xl:w-[55rem] xl:ml-[5rem]
+        lg:w-[45rem] lg:h-[34rem] lg:mt-[-1rem] lg:ml-[5rem]
+        md:w-[30rem] 
+        sm:w-[25rem] sm:h-[40rem]
+        w-[65%] h-[70vh] mt-[12rem]
+        rounded-[20px] overflow-hidden
+      ">
+        <motion.div 
+          animate={circleAnimation}
+          className="absolute right-[-20%] top-[5%] border-[8px] border-slate-400 opacity-20 rounded-full h-[500px] w-[500px]"
+        />
+        <motion.div 
+          animate={circleAnimation}
+          className="absolute right-[-17%] top-[10%] border-[3px] border-orange-300 opacity-20 rounded-full h-[450px] w-[450px]"
+        />
+
+      </motion.div>
       
       
     </motion.div>
