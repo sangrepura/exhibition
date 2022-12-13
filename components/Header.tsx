@@ -155,7 +155,7 @@ const Header = (props: Props) => {
                         }}
                         className="px-2 bg-opacity-30 rounded-md bg-sea md:bg-transparent md:rounded-none"
                       >
-                        <a href="https://www.linkedin.com/in/seancfong/"  target='_blank' className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-500 font-light leading-8">
+                        <a href="https://www.linkedin.com/in/seancfong/"  target='_blank' rel="noreferrer" className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-500 font-light leading-8">
                           linkedin
                         </a>
                       </motion.div>
