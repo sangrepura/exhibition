@@ -14,7 +14,7 @@ const Skills = (props: Props) => {
       <h3 className="absolute top-24 uppercase font-poppins text-gray-500 text-2xl">
         Stack of all Trades
       </h3>
-      <p className="font-helvetica-light text-[30px] uppercase font-light tracking-[0.3em]">
+      <p className="font-poppins text-[30px] uppercase font-light tracking-[0.3em]">
         Under Construction
       </p>
       

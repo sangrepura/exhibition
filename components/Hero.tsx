@@ -33,7 +33,7 @@ const Hero = (props: Props) => {
     const { clientX, clientY } = e;
     const moveX = clientX - window.innerWidth / 2;
     const moveY = clientY - window.innerHeight / 2;
-    const imgOffset = 0.019;
+    const imgOffset = 0.013;
     const plateOffset = -0.015;
     const creativeOffset = -0.003;
     imgAnimation.start({

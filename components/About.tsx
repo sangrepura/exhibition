@@ -92,11 +92,13 @@ const About = (props: Props) => {
           xl:pl-[7rem]
           lg:text-[26px] lg:leading-[36px] lg:pl-[7rem] 
           sm:text-2xl
-          text-xl
+          text-lg
         ">
           <p>
             I am an undergraduate Computer Science student at&nbsp;
-            <span className="font-bold text-sunset">University of California, Irvine</span>. 
+            <span className="font-bold text-sunset">
+              University of California, Irvine
+            </span>. 
             I strive to push past the limits of creating innovative 
             and practical applications for everyone to use.
           </p>
@@ -117,7 +119,7 @@ const About = (props: Props) => {
         lg:w-[45rem] lg:h-[34rem] lg:mt-[-1rem] lg:ml-[5rem]
         md:w-[30rem] 
         sm:w-[25rem] sm:h-[40rem]
-        w-[65%] h-[70vh] mt-[12rem]
+        w-[65%] h-[75vh] mt-[12rem]
         rounded-[20px] overflow-hidden
       ">
         <motion.div 

@@ -7,9 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'poppins': ['Poppins', 'sans-serif'],
-        'helvetica': ['Helvetica', 'sans-serif'],
-        'helvetica-light': ['Helvetica Light', 'sans-serif']
+        'poppins': ['Poppins', 'sans-serif']
       },
       colors: {
         'deep-sea': '#5f7782',
@@ -26,7 +24,7 @@ module.exports = {
   },
   darkMode: 'media',
   plugins: [
-    require('tailwind-scrollbar'),
+    require('tailwind-scrollbar')({ nocompatible: true }),
   ],
   variants: {
     scrollbar: ['dark', 'rounded']
