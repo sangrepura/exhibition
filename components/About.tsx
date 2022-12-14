@@ -10,33 +10,36 @@ const About = (props: Props) => {
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
-    const moveX = clientX - window.innerWidth / 2;
-    const moveY = clientY - window.innerHeight / 2;
-    const imgOffset = -0.01;
-    const panelOffset = 0.01;
-    const circleOffset = -0.03;
-    imgAnimation.start({
-      x: moveX * imgOffset,
-      y: moveY * imgOffset,
-    })
-    panelAnimation.start({
-      x: moveX * panelOffset,
-      y: moveY * panelOffset,
-    })
-    circleAnimation.start({
-      x: moveX * circleOffset * 1.5,
-      y: moveY * circleOffset * 0.6,
-    })
+    if (clientX && clientY) {
+      const moveX = clientX - window.innerWidth / 2;
+      const moveY = clientY - window.innerHeight / 2;
+      const imgOffset = -0.01;
+      const panelOffset = 0.01;
+      const circleOffset = -0.03;
+      imgAnimation.start({
+        x: moveX * imgOffset,
+        y: moveY * imgOffset,
+      })
+      panelAnimation.start({
+        x: moveX * panelOffset,
+        y: moveY * panelOffset,
+      })
+      circleAnimation.start({
+        x: moveX * circleOffset * 1.5,
+        y: moveY * circleOffset * 0.6,
+      })
+    }
+    
   };
 
   return (
     // Page section container div
     <motion.div
       onMouseMove={e => handleMouseMove(e)}
-      initial={{ opacity: 0.5, scale: 0.96 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial={{ scale: 0.96 }}
+      whileInView={{ scale: 1 }}
       transition={{ duration: 1.2, ease: "easeInOut" }} 
-      viewport={{ once: true}}
+      viewport={{ once: true }}
       className="min-h-[100vh] max-w-9xl relative flex flex-col px-10 pb-8
       justify-evenly mx-auto items-center 
       lg:flex-row-reverse lg:justify-center
@@ -114,7 +117,7 @@ const About = (props: Props) => {
 
       <motion.div 
         animate={panelAnimation}
-        className="absolute bg-cloud drop-shadow-xl bg-opacity-40
+        className="absolute bg-gradient-to-r from-[rgba(218,213,210,0.5)] to-[rgba(220,220,230,0.2)] 
         xl:w-[55rem] xl:ml-[5rem]
         lg:w-[45rem] lg:h-[34rem] lg:mt-[-1rem] lg:ml-[5rem]
         md:w-[30rem] 

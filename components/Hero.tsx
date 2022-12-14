@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import BackgroundCircles from './BackgroundCircles'
 import { useAnimation, motion } from 'framer-motion'
 import useWindowSize from './hooks/useWindowSize'
@@ -16,7 +16,6 @@ const pathVariants = {
     pathLength: 1,
     transition: {
       duration: 2,
-      delay: 0.1,
       ease: [.59,.07,.32,.93]
     }
   },
@@ -31,23 +30,25 @@ const Hero = (props: Props) => {
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
-    const moveX = clientX - window.innerWidth / 2;
-    const moveY = clientY - window.innerHeight / 2;
-    const imgOffset = 0.013;
-    const plateOffset = -0.015;
-    const creativeOffset = -0.003;
-    imgAnimation.start({
-      x: moveX * imgOffset,
-      y: moveY * imgOffset,
-    })
-    plateAnimation.start({
-      x: moveX * plateOffset,
-      y: moveY * plateOffset
-    })
-    creativeAnimation.start({
-      x: moveX * creativeOffset,
-      y: moveY * creativeOffset
-    })
+    if (clientX && clientY) {
+      const moveX = clientX - window.innerWidth / 2;
+      const moveY = clientY - window.innerHeight / 2;
+      const imgOffset = 0.013;
+      const plateOffset = -0.015;
+      const creativeOffset = -0.003;
+      imgAnimation.start({
+        x: moveX * imgOffset,
+        y: moveY * imgOffset,
+      })
+      plateAnimation.start({
+        x: moveX * plateOffset,
+        y: moveY * plateOffset
+      })
+      creativeAnimation.start({
+        x: moveX * creativeOffset,
+        y: moveY * creativeOffset
+      })
+    }
   };
 
   return (
@@ -67,7 +68,7 @@ const Hero = (props: Props) => {
         <motion.img 
           animate={imgAnimation}
           src="/sean_hero.png" alt="Sean Image" 
-          className="z-20 absolute mx-auto rounded-[10px] object-cover shadow-hero
+          className="z-20 absolute mx-auto rounded-[10px] object-cover
           xl:w-[330px] xl:h-[460px] xl:-top-32 xl:right-[1rem]
           lg:w-[280px] lg:h-[320px] lg:top-[-4rem] lg:right-[5rem] 
           md:w-[250px] md:h-[270px] md:top-[-4rem] md:right-[3rem] 
