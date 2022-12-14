@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence, useAnimationControls } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import useWindowSize from './hooks/useWindowSize'
 
@@ -32,9 +32,6 @@ const Header = (props: Props) => {
   // get states of window and navbar
   const windowSize = useWindowSize();
   const [showNav, setShowNav] = useState(true);
-
-  // controls for navbar
-  const navIconControls = useAnimationControls();
 
   // checks values of window size to see if navbar should be shown
   useEffect(() => {
@@ -90,7 +87,7 @@ const Header = (props: Props) => {
             }}
             className="z-60 absolute top-7 right-[8%] text-right items-center md:top-10 md:items-end text-gray-300"
           >
-            <button className="absolute right-0 block md:hidden" onClick={() => {setShowNav(!showNav)}}>
+            <button id="navDropdown" aria-label="Navigation Dropdown" className="absolute right-0 block md:hidden" onClick={() => {setShowNav(!showNav)}}>
               <motion.svg 
                 width="40" height="40" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"
                 variants={navIconVariants}
@@ -116,7 +113,7 @@ const Header = (props: Props) => {
                         }}
                         className="px-2 bg-opacity-60 rounded-br-lg rounded-l-lg bg-cloud md:bg-transparent md:rounded-none"
                       >
-                        <Link href="/#hero" className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-800 md:text-gray-500 font-light leading-8">
+                        <Link href="/#hero" className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-800 md:text-deep-sea font-light leading-8">
                           exhibition
                         </Link>
                       </motion.div>
@@ -133,7 +130,7 @@ const Header = (props: Props) => {
                         }}
                         className="px-2 bg-opacity-60 rounded-br-lg rounded-l-lg bg-cloud md:bg-transparent md:rounded-none"
                       >
-                        <Link href="/#hero" className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-800 md:text-gray-500 font-light leading-8">
+                        <Link href="/#hero" className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-800 md:text-deep-sea font-light leading-8">
                           bulletin
                         </Link>
                       </motion.div>
@@ -150,7 +147,7 @@ const Header = (props: Props) => {
                         }}
                         className="px-2 bg-opacity-60 rounded-br-lg rounded-l-lg bg-cloud md:bg-transparent md:rounded-none"
                       >
-                        <a href="https://www.linkedin.com/in/seancfong/"  target='_blank' rel="noreferrer" className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-800 md:text-gray-500 font-light leading-8">
+                        <a href="https://www.linkedin.com/in/seancfong/"  target='_blank' rel="noreferrer" className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-800 md:text-deep-sea font-light leading-8">
                           linkedin
                         </a>
                       </motion.div>
