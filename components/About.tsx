@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion, useAnimation } from 'framer-motion'
+import Image from 'next/image'
 
 type Props = {}
 
@@ -9,12 +10,13 @@ const About = (props: Props) => {
   const circleAnimation = useAnimation();
 
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (!e) {return};
+
     const { clientX, clientY } = e;
     const moveX = clientX - window.innerWidth / 2;
     const moveY = clientY - window.innerHeight / 2;
     const imgOffset = -0.01;
     const panelOffset = 0.01;
-    const circleOffset = -0.03;
     imgAnimation.start({
       x: moveX * imgOffset,
       y: moveY * imgOffset,
@@ -23,20 +25,12 @@ const About = (props: Props) => {
       x: moveX * panelOffset,
       y: moveY * panelOffset,
     })
-    circleAnimation.start({
-      x: moveX * circleOffset * 1.5,
-      y: moveY * circleOffset * 0.6,
-    })
   };
 
   return (
     // Page section container div
-    <motion.div
+    <div
       onMouseMove={e => handleMouseMove(e)}
-      initial={{ opacity: 0.5, scale: 0.96 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1.2, ease: "easeInOut" }} 
-      viewport={{ once: true}}
       className="min-h-[100vh] max-w-9xl relative flex flex-col px-10 pb-8
       justify-evenly mx-auto items-center 
       lg:flex-row-reverse lg:justify-center
@@ -51,17 +45,17 @@ const About = (props: Props) => {
         sm:w-[40vw] sm:h-[40vw]
         w-[55vw] h-[55vw] 
       ">
-        <motion.img 
+        <motion.div 
           animate={imgAnimation}
-          src="about_img.png" alt="About Image"
-          className="z-20 absolute top-0 left-0 max-h-[50vh] object-cover rounded-[20px] shadow-about
+          className="z-10 absolute top-0 left-0 max-h-[50vh] overflow-hidden rounded-[20px] shadow-about
           xl:w-[320px] xl:h-[320px]
           lg:w-[300px] lg:h-[300px]
           md:w-[30vw] md:h-[30vw]
           sm:w-[40vw] sm:h-[40vw]
           w-[55vw] h-[55vw] 
         ">
-        </motion.img>
+          <Image src="/about_img.png" alt="About Image" width={320} height={320}/>
+        </motion.div>
       </div>
       {/* Text container div */}
       <div 
@@ -114,7 +108,7 @@ const About = (props: Props) => {
 
       <motion.div 
         animate={panelAnimation}
-        className="absolute bg-cloud drop-shadow-xl bg-opacity-40
+        className="absolute bg-gradient-to-r from-[rgba(218,213,210,0.5)] to-[rgba(220,220,230,0.2)] 
         xl:w-[55rem] xl:ml-[5rem]
         lg:w-[45rem] lg:h-[34rem] lg:mt-[-1rem] lg:ml-[5rem]
         md:w-[30rem] 
@@ -126,15 +120,14 @@ const About = (props: Props) => {
           animate={circleAnimation}
           className="absolute right-[-20%] top-[5%] border-[8px] border-slate-400 opacity-20 rounded-full h-[500px] w-[500px]"
         />
-        <motion.div 
-          animate={circleAnimation}
+        <div
           className="absolute right-[-17%] top-[10%] border-[3px] border-orange-300 opacity-20 rounded-full h-[450px] w-[450px]"
         />
 
       </motion.div>
       
       
-    </motion.div>
+    </div>
 
     
   )

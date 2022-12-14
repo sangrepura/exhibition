@@ -20,9 +20,13 @@ export default function Home() {
     <div 
       className="relative bg-[#eeeeee] text-gray-800 h-screen overflow-x-hidden overflow-y-scroll z-0
       scrollbar-thin scrollbar-thumb-rounded-full 
-      scrollbar-thumb-[#cccccc] scrollbar-track-[#eeeeee] hover:scrollbar-thumb-[#aaaaaa]
+      scrollbar-thumb-[rgba(150,150,150,0.5)] scrollbar-track-[#eeeeee]
     ">
       <Head>
+        <meta name="keywords" content="portfolio, exhibition, seancfong, software developer, computer science" />
+        <meta name="description" content="Minimal software developer portfolio site, constructed by Sean Collan Fong." />
+        <meta name="author" content="Sean Collan Fong" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Exhibition | seancfong</title>
       </Head>
 

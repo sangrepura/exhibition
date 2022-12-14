@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import BackgroundCircles from './BackgroundCircles'
 import { useAnimation, motion } from 'framer-motion'
 import useWindowSize from './hooks/useWindowSize'
@@ -16,7 +16,6 @@ const pathVariants = {
     pathLength: 1,
     transition: {
       duration: 2,
-      delay: 0.1,
       ease: [.59,.07,.32,.93]
     }
   },
@@ -25,17 +24,17 @@ const pathVariants = {
 const Hero = (props: Props) => {
   const imgAnimation = useAnimation();
   const plateAnimation = useAnimation();
-  const creativeAnimation = useAnimation();
 
   const windowSize = useWindowSize();
 
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (!e) { return };
+    
     const { clientX, clientY } = e;
     const moveX = clientX - window.innerWidth / 2;
     const moveY = clientY - window.innerHeight / 2;
-    const imgOffset = 0.013;
-    const plateOffset = -0.015;
-    const creativeOffset = -0.003;
+    const imgOffset = 0.006;
+    const plateOffset = -0.01;
     imgAnimation.start({
       x: moveX * imgOffset,
       y: moveY * imgOffset,
@@ -44,10 +43,7 @@ const Hero = (props: Props) => {
       x: moveX * plateOffset,
       y: moveY * plateOffset
     })
-    creativeAnimation.start({
-      x: moveX * creativeOffset,
-      y: moveY * creativeOffset
-    })
+
   };
 
   return (
@@ -64,16 +60,19 @@ const Hero = (props: Props) => {
         sm:pt-[15rem] sm:pl-20 sm:w-[90%]
         w-[80%] pt-[15rem]
       ">
-        <motion.img 
+        <motion.div 
           animate={imgAnimation}
-          src="/sean_hero.png" alt="Sean Image" 
-          className="z-20 absolute mx-auto rounded-[10px] object-cover shadow-hero
+          className="z-20 absolute mx-auto rounded-[10px] overflow-hidden
           xl:w-[330px] xl:h-[460px] xl:-top-32 xl:right-[1rem]
           lg:w-[280px] lg:h-[320px] lg:top-[-4rem] lg:right-[5rem] 
           md:w-[250px] md:h-[270px] md:top-[-4rem] md:right-[3rem] 
           sm:w-[260px] sm:h-[300px] sm:top-[-4rem] sm:right-[6rem] 
           w-[240px] h-[320px] right-[2rem] -top-[6rem]
-        "/>
+        ">
+          <Image priority src="/sean_hero.png" alt="Sean Image" width={330} height={460}
+          className="absolute sm:-top-5 md:-top-7 lg:-top-10 xl:top-0" 
+          />
+        </motion.div>
         
         <motion.div 
           animate={plateAnimation}
@@ -108,9 +107,8 @@ const Hero = (props: Props) => {
             I enjoy using 
             <span className="relative">
               &nbsp;creativity
-              <motion.div 
+              <div 
                 className="absolute left-1 -bottom-2"
-                animate={creativeAnimation}
               >
                 <svg 
                   className="h-[14px] w-[120px]
@@ -125,7 +123,7 @@ const Hero = (props: Props) => {
                     animate="visible"
                   />
                 </svg>
-              </motion.div>
+              </div>
             </span>
           </h3>
           <h3 
