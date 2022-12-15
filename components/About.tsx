@@ -54,7 +54,7 @@ const About = (props: Props) => {
           sm:w-[40vw] sm:h-[40vw]
           w-[55vw] h-[55vw] 
         ">
-          <Image src="/about_img.png" alt="About Image" width={320} height={320}/>
+          <Image priority src="/images/about_img.png" alt="About Image" width={400} height={400}/>
         </motion.div>
       </div>
       {/* Text container div */}

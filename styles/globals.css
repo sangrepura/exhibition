@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .skillCardContainer {
+        @apply my-2 cursor-pointer font-poppins
+    }
+
+    .skillCard {
+        @apply px-4 py-4 rounded-[15px]
+    }
+}
