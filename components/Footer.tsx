@@ -9,7 +9,7 @@ const Footer = (props: Props) => {
           &copy; Sean Collan Fong 2022
       </p>
       <p>
-        <a target="_blank" href="https://icons8.com/icon/FQlr_bFSqEdG/node-js">
+        <a target="_blank" rel="noreferrer" href="https://icons8.com/icon/FQlr_bFSqEdG/node-js">
           SVG icons&nbsp;
         </a> 
         by&nbsp;

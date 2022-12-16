@@ -53,6 +53,15 @@ const Skills = (props: Props) => {
           Like onions, <br />
           and ogres too.
           </p>
+          <p 
+            className={"text-right font-poppins font-light transition ease-in-out mt-2 " +
+            "lg:text-[26px] lg:leading-[36px] " +
+            "sm:text-2xl " +
+            "text-md " + 
+            ((openCard) ? ("opacity-30") : ("opacity-100"))
+          }>
+            Source - Probably Shrek
+          </p>
         </div>
         <div 
           className="relative flex flex-col h-[40vh] w-full mt-32">
