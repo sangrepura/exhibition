@@ -1,7 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { IconContext } from 'react-icons'
-import { FaBeer } from 'react-icons/fa'
+import SkillSVG from './SkillSVG'
 
 type Props = {
   isOpen: number
@@ -10,8 +9,8 @@ type Props = {
 const Frontend = (props: Props) => {
   const isOpen = (props.isOpen == 1);
 
-  const cardOpenStyle = 'bg-sunburst';
-  const cardCloseStyle = 'bg-sunburst';
+  const cardOpenStyle = '';
+  const cardCloseStyle = '';
 
   return (
     <motion.div 
@@ -19,22 +18,46 @@ const Frontend = (props: Props) => {
       transition={{
         layout: { duration: 0.6, type: "spring" }
       }}
-      className={'skillCard bg-opacity-70 ' +
+      className={'bg-gradient-to-l from-[rgba(199,138,68,0.15)] to-[rgba(199,138,68,0.6)] skillCard ' +
         (isOpen ? cardOpenStyle : cardCloseStyle)
       }>
-      <motion.h4 layout="position" className="uppercase text-3xl select-none">
+      <motion.h4 layout="position" className="font-light tracking-[0.15em] uppercase text-3xl select-none">
         Frontend
       </motion.h4>
       { isOpen && (
-        <motion.div className="bg-slate-200 bg-opacity-40 p-5 rounded-[10px]">
-          <div>
-            <FaBeer />
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="relative p-5"
+        >
+          {/* Icon row */}
+          <div className="flex flex-row w-full justify-evenly my-3">
+            <SkillSVG 
+              src="/svg/frontend_card_html.svg"
+              hoverText="HTML"
+            />
+            <SkillSVG 
+              src="/svg/frontend_card_css.svg"
+              hoverText="CSS"
+            />
+            <SkillSVG 
+              src="/svg/frontend_card_js.svg"
+              hoverText="JS"
+            />
+            <SkillSVG 
+              src="/svg/frontend_card_react.svg"
+              hoverText="React"
+            />
+            <SkillSVG 
+              src="/svg/frontend_card_next.svg"
+              hoverText="Next"
+            />
           </div>
-          <p className="text-md text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Similique incidunt dolore corrupti veniam consequuntur cum, 
-            nisi dolorem. Laborum enim vel eaque, magnam quod molestiae 
-            aliquam fugiat doloribus autem perspiciatis optio.
+          
+          {/* Paragraph */}
+          <p className="text-lg text-black font-light tracking-wide text-center select-none">
+            Modern applications require modern solutions.
+            Modern solutions require modern frameworks. 
           </p>
         </motion.div>
       )}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import SkillSVG from './SkillSVG'
 
 type Props = {
   isOpen: number
@@ -8,24 +9,50 @@ type Props = {
 const Backend = (props: Props) => {
   const isOpen = (props.isOpen == 4);
 
+  const cardOpenStyle = '';
+  const cardCloseStyle = '';
+
   return (
     <motion.div 
       layout
       transition={{
         layout: { duration: 0.6, type: "spring" }
       }}
-      className="font-poppins bg-deep-sea bg-opacity-70 skillCard 
-    ">
-      <motion.h4 layout="position" className="uppercase text-3xl select-none">
+      className={'bg-gradient-to-l from-[rgba(95,119,130,0.15)] to-[rgba(95,119,130,0.6)] skillCard ' +
+        (isOpen ? cardOpenStyle : cardCloseStyle)
+      }>
+      <motion.h4 layout="position" className="font-light tracking-[0.15em] uppercase text-3xl select-none">
         Backend
       </motion.h4>
       { isOpen && (
-        <motion.div className="bg-cloud p-5 rounded-[10px]">
-          <p className="text-md text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Similique incidunt dolore corrupti veniam consequuntur cum, 
-            nisi dolorem. Laborum enim vel eaque, magnam quod molestiae 
-            aliquam fugiat doloribus autem perspiciatis optio.
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="relative p-5"
+        >
+          {/* Icon row */}
+          <div className="flex flex-row w-full justify-evenly my-3">
+            <SkillSVG 
+              src="/svg/backend_card_python.svg"
+              hoverText="Python"
+            />
+            <SkillSVG 
+              src="/svg/backend_card_node.svg"
+              hoverText="Node"
+            />
+            <SkillSVG 
+              src="/svg/backend_card_express.svg"
+              hoverText="Express"
+            />
+            <SkillSVG 
+              src="/svg/backend_card_socketio.svg"
+              hoverText="Socket.io"
+            />
+          </div>
+          
+          {/* Paragraph */}
+          <p className="text-lg text-black font-light tracking-wide text-center">
+            This is where magic is made.
           </p>
         </motion.div>
       )}

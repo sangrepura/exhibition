@@ -7,7 +7,6 @@ type Props = {}
 const About = (props: Props) => {
   const panelAnimation = useAnimation();
   const imgAnimation = useAnimation();
-  const circleAnimation = useAnimation();
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!e) {return};
@@ -47,12 +46,12 @@ const About = (props: Props) => {
       ">
         <motion.div 
           animate={imgAnimation}
-          className="z-10 absolute top-0 left-0 max-h-[50vh] overflow-hidden rounded-[20px] shadow-about
+          className="z-10 absolute -bottom-8 sm:bottom-0 left-0 max-h-[50vh] overflow-hidden rounded-[20px] shadow-about
           xl:w-[320px] xl:h-[320px]
           lg:w-[300px] lg:h-[300px]
           md:w-[30vw] md:h-[30vw]
           sm:w-[40vw] sm:h-[40vw]
-          w-[55vw] h-[55vw] 
+          w-[50vw] h-[50vw] opacity-90
         ">
           <Image priority src="/images/about_img.png" alt="About Image" width={400} height={400}/>
         </motion.div>
@@ -116,8 +115,7 @@ const About = (props: Props) => {
         w-[65%] h-[75vh] mt-[12rem]
         rounded-[20px] overflow-hidden
       ">
-        <motion.div 
-          animate={circleAnimation}
+        <div 
           className="absolute right-[-20%] top-[5%] border-[8px] border-slate-400 opacity-20 rounded-full h-[500px] w-[500px]"
         />
         <div

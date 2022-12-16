@@ -2,12 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer components {
+    /* 
+        Use @apply here for expediting the process of styling multiple
+        Card SVG Elements at once
+    */
     .skillCardContainer {
         @apply my-2 cursor-pointer font-poppins
     }
 
     .skillCard {
-        @apply px-4 py-4 rounded-[15px]
+        @apply px-3 py-4 rounded-[15px]
+    }
+
+    .skillCardSVG {
+        @apply relative m-1 flex
+    }
+
+    .skillCardSVGDesc:hover p {
+        @apply transition transform ease-in-out -translate-y-6 opacity-100
     }
 }
