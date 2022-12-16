@@ -13,7 +13,7 @@ const Footer = (props: Props) => {
           SVG icons&nbsp;
         </a> 
         by&nbsp;
-        <a className="text-deep-sea font-light" target="_blank" href="https://icons8.com">Icons8</a>
+        <a className="text-deep-sea font-light" target="_blank" rel="noreferrer" href="https://icons8.com">Icons8</a>
       </p>
     </div>
   )
