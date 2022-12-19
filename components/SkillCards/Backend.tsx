@@ -21,17 +21,17 @@ const Backend = (props: Props) => {
       className={'bg-gradient-to-l from-[rgba(95,119,130,0.15)] to-[rgba(95,119,130,0.6)] skillCard ' +
         (isOpen ? cardOpenStyle : cardCloseStyle)
       }>
-      <motion.h4 layout="position" className="font-light tracking-[0.15em] uppercase text-3xl select-none">
+      <motion.h4 layout="position" className="skillCardTitle">
         Backend
       </motion.h4>
       { isOpen && (
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="relative p-5"
+          className="relative pb-5"
         >
           {/* Icon row */}
-          <div className="flex flex-row w-full justify-evenly my-3">
+          <div className="flex flex-row w-full justify-evenly my-3 child:basis-1/5">
             <SkillSVG 
               src="/svg/backend_card_python.svg"
               hoverText="Python"
@@ -52,7 +52,7 @@ const Backend = (props: Props) => {
           
           {/* Paragraph */}
           <p className="text-lg text-black font-light tracking-wide text-center">
-            This is where magic is made.
+            This is how the magic is made.
           </p>
         </motion.div>
       )}

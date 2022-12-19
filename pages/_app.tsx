@@ -21,33 +21,11 @@ export default function App({ Component, pageProps }: AppProps) {
           }
         `}
       </style>
-      <AnimatePresence mode="wait">
-        <motion.div 
-          key={router.route}
-          initial="initialState"
-          animate="animateState"
-          exit="exitState" 
-          transition={{ 
-            duration: 1.5,
-            ease: [.67,.09,.5,.92]
-          }}
-          variants={{
-            initialState: {
-              opacity: 0,
-              clipPath: "circle(50%)"
-            },
-            animateState: {
-              opacity: [0, 0.9, 1],
-              clipPath: "circle(100%)"
-            },
-            exitState: {
-              clipPath: "circle(100%)"
-            }
-          }}
+        <div 
+          key={router.route}        
           className="base-page-size">
           <Component {...pageProps} />
-        </motion.div>
-      </AnimatePresence>
+        </div>
     </>
       
 

@@ -21,17 +21,17 @@ const Experience = (props: Props) => {
       className={'bg-gradient-to-l from-[rgba(180,193,197,0.15)] to-[rgba(180,193,197,0.7)] skillCard ' +
         (isOpen ? cardOpenStyle : cardCloseStyle)
       }>
-      <motion.h4 layout="position" className="font-light tracking-[0.15em] uppercase text-3xl select-none">
+      <motion.h4 layout="position" className="skillCardTitle">
         Experience
       </motion.h4>
       { isOpen && (
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="relative p-5"
+          className="relative pb-5"
         >
           {/* Icon row */}
-          <div className="flex flex-row w-full justify-evenly my-3">
+          <div className="flex flex-row w-full justify-evenly my-3 child:basis-1/5">
             <SkillSVG 
               src="/svg/frontend_card_html.svg"
               hoverText="HTML&nbsp;"

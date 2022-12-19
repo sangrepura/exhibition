@@ -48,7 +48,7 @@ const Hero = (props: Props) => {
 
   return (
     <div 
-      className="relative mt-[-2.5rem] mb-[3rem] h-screen flex flex-col space-y-8 items-center justify-center 
+      className="relative -mt-20 mb-[3rem] h-screen flex flex-col items-center justify-center 
       overflow-y-hidden overflow-x-hidden"
       onMouseMove={e => handleMouseMove(e)}
     >

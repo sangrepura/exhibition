@@ -21,17 +21,17 @@ const Talents = (props: Props) => {
       className={'bg-gradient-to-l from-[rgba(216,178,110,0.15)] to-[rgba(216,178,110,0.7)] skillCard ' +
         (isOpen ? cardOpenStyle : cardCloseStyle)
       }>
-      <motion.h4 layout="position" className="font-light tracking-[0.15em] uppercase text-3xl select-none">
+      <motion.h4 layout="position" className="skillCardTitle">
         Talents
       </motion.h4>
       { isOpen && (
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="relative p-5"
+          className="relative pb-5"
         >
           {/* Icon row */}
-          <div className="flex flex-row w-full justify-evenly my-3">
+          <div className="flex flex-row w-full justify-evenly my-3  child:basis-1/5">
             <SkillSVG 
               src="/svg/talents_card_git.svg"
               hoverText="Git"
@@ -48,11 +48,15 @@ const Talents = (props: Props) => {
               src="/svg/talents_card_photoshop.svg"
               hoverText="Photoshop"
             />
+            <SkillSVG 
+              src="/svg/talents_card_graphql.svg"
+              hoverText="GraphQL"
+            />
           </div>
           
           {/* Paragraph */}
           <p className="text-lg text-black font-light text-center">
-            My arsenal for a most efficient workflow.
+            My arsenal for a most productive workflow.
           </p>
         </motion.div>
       )}
