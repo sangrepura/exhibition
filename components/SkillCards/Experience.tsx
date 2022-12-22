@@ -33,31 +33,23 @@ const Experience = (props: Props) => {
           {/* Icon row */}
           <div className="flex flex-row w-full justify-evenly my-3 child:basis-1/5">
             <SkillSVG 
-              src="/svg/frontend_card_html.svg"
-              hoverText="HTML&nbsp;"
+              src="/svg/experience_card_cpp.svg"
+              hoverText="C++"
             />
             <SkillSVG 
-              src="/svg/frontend_card_css.svg"
-              hoverText="CSS&nbsp;"
+              src="/svg/experience_card_python.svg"
+              hoverText="Python"
             />
             <SkillSVG 
-              src="/svg/frontend_card_js.svg"
-              hoverText="JS"
-            />
-            <SkillSVG 
-              src="/svg/frontend_card_react.svg"
-              hoverText="React"
-            />
-            <SkillSVG 
-              src="/svg/frontend_card_next.svg"
-              hoverText="Next"
+              src="/svg/experience_card_java.svg"
+              hoverText="Java"
             />
           </div>
           
           {/* Paragraph */}
           <p className="text-lg text-black font-light text-center">
-            Modern applications require modern solutions.
-            Modern solutions require modern frameworks. 
+            Development in critical thinking and analytical skills.
+            A strong foundation for intuition goes a long way.
           </p>
         </motion.div>
       )}

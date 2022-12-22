@@ -33,10 +33,6 @@ const Backend = (props: Props) => {
           {/* Icon row */}
           <div className="flex flex-row w-full justify-evenly my-3 child:basis-1/5">
             <SkillSVG 
-              src="/svg/backend_card_python.svg"
-              hoverText="Python"
-            />
-            <SkillSVG 
               src="/svg/backend_card_node.svg"
               hoverText="Node"
             />

@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Hero from '../components/Hero'
 import Skills from '../components/Skills'
 import Footer from '../components/Footer'
+import Projects from '../components/Projects'
 import { useInView, motion } from 'framer-motion'
 import { useRef } from 'react'
 
@@ -52,7 +53,7 @@ export default function Home() {
     
       {/* Projects */}
       <section id="projects">
-
+        <Projects />
       </section>
 
       {/* Contact */}
