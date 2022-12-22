@@ -1,12 +1,13 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import About from '../components/About'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
-import styles from '../styles/Home.module.css'
-import { useInView } from 'framer-motion'
-import { useEffect, useState, useRef } from 'react'
 import Skills from '../components/Skills'
+import Footer from '../components/Footer'
+import Projects from '../components/Projects'
+import { useInView, motion } from 'framer-motion'
+import { useRef } from 'react'
+
 
 export default function Home() {
   const heroRef = useRef(null);
@@ -17,10 +18,12 @@ export default function Home() {
   // scrollbar-thumb-[#cccccc] scrollbar-track-[#eeeeee] hover:scrollbar-thumb-[#aaaaaa]
 
   return (
-    <div 
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.2, ease: [0.67,0.09,0.5,0.92]}}
       className="relative bg-[#eeeeee] text-gray-800 h-screen overflow-x-hidden overflow-y-scroll z-0
-      scrollbar-thin scrollbar-thumb-rounded-full 
-      scrollbar-thumb-[rgba(150,150,150,0.5)] scrollbar-track-[#eeeeee]
+      scrollbar-none
     ">
       <Head>
         <meta name="keywords" content="portfolio, exhibition, seancfong, software developer, computer science" />
@@ -49,9 +52,20 @@ export default function Home() {
       </section>
     
       {/* Projects */}
+      <section id="projects">
+        <Projects />
+      </section>
 
       {/* Contact */}
-    </div>
+      <section id="contact">
+
+      </section>
+
+      {/* Footer */}
+      <section id="footer">
+        <Footer />
+      </section>
+    </motion.div>
 
     
   )

@@ -42,7 +42,7 @@ const Header = (props: Props) => {
 
 
   return (
-    <header className="sticky top-0 pt-10 px-32 flex justify-between max-w-[100rem] mx-auto z-50 items-center">
+    <header className="sticky h-20 top-0 pt-10 px-32 flex justify-between max-w-[100rem] mx-auto z-50 items-center">
       <motion.div 
         initial={{
           x: -500,
@@ -52,11 +52,11 @@ const Header = (props: Props) => {
         }}
         transition={{
           duration: 1.2,
-          ease: [.27, .61, .25, .95]
+          ease: [.3, .6, .2, .9]
         }}
         className="relative flex flex-row items-center"
       >
-        <div className="absolute -top-3 -left-[6.5rem] md:-top-2 md:-left-2 bg-[#eeeeee] bg-opacity-50 px-5 py-1 rounded-lg">
+        <div className="absolute -top-8 md:-top-6 md:left-[-3rem] left-[-5rem] bg-[#eeeeee] bg-opacity-50 px-5 py-1 rounded-lg">
           <h3 className="text-xl md:text-2xl font-poppins text-deep-sea tracking-widest">seancfong</h3>
         </div>
         
@@ -67,7 +67,7 @@ const Header = (props: Props) => {
         { heroVisible && (
           <motion.div 
             initial={{
-              x: 500,
+              x: 200,
             }}
             animate={{
               x: 0,
@@ -83,7 +83,7 @@ const Header = (props: Props) => {
             }}
             transition={{
               duration: 1.2,
-              ease: [.27, .61, .25, .95]
+              ease: "easeInOut"
             }}
             className="z-60 absolute top-7 right-[8%] text-right items-center md:top-10 md:items-end text-gray-300"
           >
@@ -125,7 +125,7 @@ const Header = (props: Props) => {
                         exit={{ y: -50 }}
                         transition={{
                           duration: 0.5,
-                          delay: 0.06,
+                          delay: 0.05,
                           ease: "easeInOut"
                         }}
                         className="px-2 bg-opacity-60 rounded-br-lg rounded-l-lg bg-cloud md:bg-transparent md:rounded-none"
@@ -142,7 +142,7 @@ const Header = (props: Props) => {
                         exit={{ y: -50 }}
                         transition={{
                           duration: 0.5,
-                          delay: 0.12,
+                          delay: 0.1,
                           ease: "easeInOut"
                         }}
                         className="px-2 bg-opacity-60 rounded-br-lg rounded-l-lg bg-cloud md:bg-transparent md:rounded-none"
@@ -177,7 +177,7 @@ const Header = (props: Props) => {
             }}
             transition={{
               duration: 1.2,
-              ease: [.27, .61, .25, .95]
+              ease: "easeInOut"
             }}
             className="absolute right-[8%] top-10 flex-row items-end text-gray-300 cursor-pointer space-x-8"
           >

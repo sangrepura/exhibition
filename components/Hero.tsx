@@ -48,7 +48,7 @@ const Hero = (props: Props) => {
 
   return (
     <div 
-      className="relative mt-[-2.5rem] mb-[3rem] h-screen flex flex-col space-y-8 items-center justify-center 
+      className="relative -mt-20 mb-[3rem] h-screen flex flex-col items-center justify-center 
       overflow-y-hidden overflow-x-hidden"
       onMouseMove={e => handleMouseMove(e)}
     >
@@ -69,7 +69,7 @@ const Hero = (props: Props) => {
           sm:w-[260px] sm:h-[300px] sm:top-[-4rem] sm:right-[6rem] 
           w-[240px] h-[320px] right-[2rem] -top-[6rem]
         ">
-          <Image priority src="/sean_hero.png" alt="Sean Image" width={330} height={460}
+          <Image priority src="/images/sean_hero.png" alt="Sean Image" width={330} height={460}
           className="absolute sm:-top-5 md:-top-7 lg:-top-10 xl:top-0" 
           />
         </motion.div>

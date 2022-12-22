@@ -26,9 +26,9 @@ module.exports = {
   },
   darkMode: 'media',
   plugins: [
-    require('tailwind-scrollbar')({ nocompatible: true }),
-  ],
-  variants: {
-    scrollbar: ['dark', 'rounded']
+    require('tailwind-scrollbar'),
+    function ({ addVariant }) {
+      addVariant('child', '& > *');
   }
+  ],
 }

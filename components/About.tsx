@@ -1,13 +1,15 @@
-import React from 'react'
-import { motion, useAnimation } from 'framer-motion'
+import React, { useRef } from 'react'
+import { motion, useAnimation, useInView } from 'framer-motion'
 import Image from 'next/image'
 
 type Props = {}
 
 const About = (props: Props) => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true })
+
   const panelAnimation = useAnimation();
   const imgAnimation = useAnimation();
-  const circleAnimation = useAnimation();
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!e) {return};
@@ -31,7 +33,7 @@ const About = (props: Props) => {
     // Page section container div
     <div
       onMouseMove={e => handleMouseMove(e)}
-      className="min-h-[100vh] max-w-9xl relative flex flex-col px-10 pb-8
+      className="min-h-[100vh] max-w-[150rem] relative flex flex-col px-10
       justify-evenly mx-auto items-center 
       lg:flex-row-reverse lg:justify-center
       ">
@@ -47,14 +49,14 @@ const About = (props: Props) => {
       ">
         <motion.div 
           animate={imgAnimation}
-          className="z-10 absolute top-0 left-0 max-h-[50vh] overflow-hidden rounded-[20px] shadow-about
+          className="z-10 absolute -bottom-8 sm:bottom-0 left-0 max-h-[50vh] overflow-hidden rounded-[20px] shadow-about
           xl:w-[320px] xl:h-[320px]
           lg:w-[300px] lg:h-[300px]
           md:w-[30vw] md:h-[30vw]
           sm:w-[40vw] sm:h-[40vw]
-          w-[55vw] h-[55vw] 
+          w-[50vw] h-[50vw] opacity-90
         ">
-          <Image src="/about_img.png" alt="About Image" width={320} height={320}/>
+          <Image priority src="/images/about_img.png" alt="About Image" width={400} height={400}/>
         </motion.div>
       </div>
       {/* Text container div */}
@@ -72,11 +74,12 @@ const About = (props: Props) => {
         sm:w-[40vw] sm:top-[-4rem]
         h-[50px] w-[55vw] top-[-4rem]
         ">
-          <h3 
-            className="uppercase w-[100%] font-poppins tracking-[0.1em] leading-[100px] text-center
-            sm:text-[60px]
-            text-[50px]
-          ">
+          <h3
+            className={"uppercase w-[100%] font-poppins tracking-[0.07em] leading-[100px] text-center " +
+            "sm:text-[60px] " +
+            "text-[50px] transition duration-[1200ms] ease-in-out delay-200 " + 
+            ((!isInView) ? ("-translate-x-20 opacity-0") : ("opacity-100 translate-x-0"))
+          }>
               Hello,
           </h3>
         </div>
@@ -88,7 +91,7 @@ const About = (props: Props) => {
           sm:text-2xl
           text-lg
         ">
-          <p>
+          <p className={"transition duration-1000 " + ((!isInView) ? ("translate-y-20 opacity-0") : ("opacity-100 translate-y-0"))}>
             I am an undergraduate Computer Science student at&nbsp;
             <span className="font-bold text-sunset">
               University of California, Irvine
@@ -97,7 +100,7 @@ const About = (props: Props) => {
             and practical applications for everyone to use.
           </p>
           <br />
-          <p>
+          <p className={"transition duration-1000 delay-100 " + ((!isInView) ? ("translate-y-20 opacity-0") : ("opacity-100 translate-y-0"))}>
             I spend my free time playing <span className="font-bold text-deep-sea">piano</span>, 
             experimenting with <span className="font-bold text-deep-sea">photography</span>, 
             building <span className="font-bold text-deep-sea">mechanical keyboards</span>, 
@@ -107,8 +110,9 @@ const About = (props: Props) => {
       </div>
 
       <motion.div 
+        ref={sectionRef}
         animate={panelAnimation}
-        className="absolute bg-gradient-to-r from-[rgba(218,213,210,0.5)] to-[rgba(220,220,230,0.2)] 
+        className="absolute bg-gradient-to-r from-[rgba(215,218,223,0.5)] to-[rgba(220,220,230,0.15)] 
         xl:w-[55rem] xl:ml-[5rem]
         lg:w-[45rem] lg:h-[34rem] lg:mt-[-1rem] lg:ml-[5rem]
         md:w-[30rem] 
@@ -116,13 +120,18 @@ const About = (props: Props) => {
         w-[65%] h-[75vh] mt-[12rem]
         rounded-[20px] overflow-hidden
       ">
-        <motion.div 
-          animate={circleAnimation}
-          className="absolute right-[-20%] top-[5%] border-[8px] border-slate-400 opacity-20 rounded-full h-[500px] w-[500px]"
-        />
+        <div 
+          className={"transition duration-[1500ms] ease-in-out absolute border-[8px] border-slate-400 " +
+          "rounded-full h-[500px] w-[500px] " +
+          "lg:right-[-20%] lg:top-[5%] md:right-[-20%] md:top-[5%] right-[10%] top-[10%] " +
+          ((isInView) ? ("translate-x-0 translate-y-0 opacity-20") : ("translate-x-32 translate-y-6 opacity-40"))
+        }/>
         <div
-          className="absolute right-[-17%] top-[10%] border-[3px] border-orange-300 opacity-20 rounded-full h-[450px] w-[450px]"
-        />
+          className={"transition duration-[1800ms] ease-in-out absolute border-[3px] border-orange-300 "+
+          "rounded-full h-[450px] w-[450px] " +
+          "lg:right-[-17%] lg:top-[10%] md:right-[-15%] md:top-[9%] right-[16%] top-[14%] " +
+          ((isInView) ? ("translate-x-0 translate-y-0 opacity-30") : ("translate-x-32 translate-y-6 opacity-40"))
+        }/>
 
       </motion.div>
       
