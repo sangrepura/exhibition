@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0  }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.2, ease: [0.67,0.09,0.5,0.92]}}
       className="relative bg-[#eeeeee] text-gray-800 h-screen overflow-x-hidden overflow-y-scroll z-0

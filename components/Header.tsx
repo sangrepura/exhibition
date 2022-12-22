@@ -45,7 +45,7 @@ const Header = (props: Props) => {
     <header className="sticky h-20 top-0 pt-10 px-32 flex justify-between max-w-[100rem] mx-auto z-50 items-center">
       <motion.div 
         initial={{
-          x: -500,
+          x: -200,
         }}
         animate={{
           x: 0,
@@ -83,7 +83,7 @@ const Header = (props: Props) => {
             }}
             transition={{
               duration: 1.2,
-              ease: "easeInOut"
+              ease: [.3, .6, .2, .9]
             }}
             className="z-60 absolute top-7 right-[8%] text-right items-center md:top-10 md:items-end text-gray-300"
           >
