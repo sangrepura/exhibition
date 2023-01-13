@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll } from 'framer-motion';
 import Link from 'next/link';
 import useWindowSize from './hooks/useWindowSize'
 
-type Props = {mode: boolean};
+type Props = {};
 
 const navIconVariants = {
   idle: { rotate: 0 },
@@ -26,12 +26,18 @@ const navIconVariants = {
 };
 
 const Header = (props: Props) => {
-  // get hero section visibility prop
-  const heroVisible = props.mode;
+  const { scrollYProgress } = useScroll();
+  const isBrowser = () => typeof window !== 'undefined';
+
+  function scrollToTop() {
+      if (!isBrowser()) return;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   // get states of window and navbar
   const windowSize = useWindowSize();
   const [showNav, setShowNav] = useState(true);
+  const [showBack, setShowBack] = useState(false);
 
   // checks values of window size to see if navbar should be shown
   useEffect(() => {
@@ -40,9 +46,20 @@ const Header = (props: Props) => {
 
   }, [windowSize.width]);
 
+  useEffect(() => {
+    return scrollYProgress.onChange((latestValue) => {
+      if (latestValue > 0.3) {
+        setShowBack(true);
+      } else {
+        setShowBack(false);
+      }
+        
+    });
+});
+
 
   return (
-    <header className="sticky h-20 top-0 pt-10 px-32 flex justify-between max-w-[100rem] mx-auto z-50 items-center">
+    <header className="fixed w-full h-20 top-0 pt-10 px-32 flex justify-between mx-auto z-30 items-center">
       <motion.div 
         initial={{
           x: -200,
@@ -64,7 +81,7 @@ const Header = (props: Props) => {
 
       {/* For wider screens */}
       <AnimatePresence>
-        { heroVisible && (
+        { !showBack && (
           <motion.div 
             initial={{
               x: 200,
@@ -85,7 +102,7 @@ const Header = (props: Props) => {
               duration: 1.2,
               ease: [.3, .6, .2, .9]
             }}
-            className="z-60 absolute top-7 right-[8%] text-right items-center md:top-10 md:items-end text-gray-300"
+            className="z-40 absolute top-7 right-[8%] text-right items-center md:top-10 md:items-end text-gray-300"
           >
             <button id="navDropdown" aria-label="Navigation Dropdown" className="absolute right-0 block md:hidden" onClick={() => {setShowNav(!showNav)}}>
               <motion.svg 
@@ -160,7 +177,7 @@ const Header = (props: Props) => {
       </AnimatePresence>
 
       <AnimatePresence>
-        { !heroVisible && (
+        { showBack && (
           <motion.div 
             initial={{
               y: -100,
@@ -183,9 +200,9 @@ const Header = (props: Props) => {
           >
             {/* for larger devices */}
             <div className="hidden md:flex">
-              <Link href="/#hero" className="font-poppins text-lg text-gray-500 font-light">
+              <button onClick={scrollToTop} className="font-poppins text-lg text-gray-500 font-light">
                 back to top
-              </Link>
+              </button>
             </div>
 
             {/* for smaller devices */}

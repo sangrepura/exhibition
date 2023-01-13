@@ -9,7 +9,7 @@ type Props = {}
 
 const Skills = (props: Props) => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true })
+  const isInView = useInView(sectionRef, { once: true, amount: 0.6 })
   const [openCard, setOpenCard] = useState(0);
 
   const panelAnimation = useAnimation();

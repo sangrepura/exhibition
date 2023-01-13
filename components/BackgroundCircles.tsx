@@ -7,13 +7,15 @@ const BackgroundCircles = (props: Props) => {
   return (
     <motion.div 
         initial={{
+            opacity: 0.3
         }}
         animate={{
-            scale: [1, 1.2]
+            opacity: 0.6,
+            scale: [0.8, 1.2]
         }}
         transition={{
-            duration: 1.8,
-            ease: "easeInOut"
+            duration: 2,
+            ease: [.49,.02,.29,.99]
         }}
         className="relative flex justify-center items-center opacity-70"
     >

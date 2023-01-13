@@ -31,7 +31,7 @@ const Experience = (props: Props) => {
           className="relative pb-5"
         >
           {/* Icon row */}
-          <div className="flex flex-row w-full justify-evenly my-3 child:basis-1/5">
+          <div className="flex flex-row w-full justify-evenly my-3 child:basis-1/3">
             <SkillSVG 
               src="/svg/experience_card_cpp.svg"
               hoverText="C++"
