@@ -6,7 +6,7 @@ type Props = {}
 
 const About = (props: Props) => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true })
+  const isInView = useInView(sectionRef, { once: true, amount: 0.6 })
 
   const panelAnimation = useAnimation();
   const imgAnimation = useAnimation();

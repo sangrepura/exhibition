@@ -18,12 +18,9 @@ export default function Home() {
   // scrollbar-thumb-[#cccccc] scrollbar-track-[#eeeeee] hover:scrollbar-thumb-[#aaaaaa]
 
   return (
-    <motion.div
-      initial={{ opacity: 0  }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.2, ease: [0.67,0.09,0.5,0.92]}}
-      className="relative bg-[#eeeeee] text-gray-800 h-screen overflow-x-hidden overflow-y-scroll z-0
-      scrollbar-none
+    <div
+      className="relative text-gray-800 overflow-x-hidden z-0
+      svgBackground
     ">
       <Head>
         <meta name="keywords" content="portfolio, exhibition, seancfong, software developer, computer science" />
@@ -34,10 +31,10 @@ export default function Home() {
       </Head>
 
       {/* Header */}
-      <Header mode={heroInView}/>
+      <Header/>
 
       {/* Hero */}
-      <section id="hero" ref={heroRef}>
+      <section id="hero" ref={heroRef} className="bg-[#ffffff]">
         <Hero />
       </section>
 
@@ -65,7 +62,7 @@ export default function Home() {
       <section id="footer">
         <Footer />
       </section>
-    </motion.div>
+    </div>
 
     
   )

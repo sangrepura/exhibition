@@ -48,8 +48,9 @@ const Hero = (props: Props) => {
 
   return (
     <div 
-      className="relative -mt-20 mb-[3rem] h-screen flex flex-col items-center justify-center 
-      overflow-y-hidden overflow-x-hidden"
+      className="relative h-screen flex flex-col items-center justify-center 
+      overflow-y-hidden overflow-x-hidden animate-circleload bg-[#eeeeee] 
+      svgBackground z-0"
       onMouseMove={e => handleMouseMove(e)}
     >
       <BackgroundCircles />
@@ -102,7 +103,7 @@ const Hero = (props: Props) => {
             className="font-poppins font-light tracking-widest 
             leading-[30px] text-xl
             sm:text-xl md:text-2xl sm:leading-[30px] md:leading-[40px]
-            lg:text-4xl lg:leading-[50px]
+            lg:text-4xl lg:leading-[50px] text-gray-500
           ">
             I enjoy using 
             <span className="relative">
@@ -130,13 +131,13 @@ const Hero = (props: Props) => {
             className="font-poppins font-light tracking-widest 
             leading-[30px] text-xl
             sm:text-xl md:text-2xl sm:leading-[30px] md:leading-[40px]
-            lg:text-4xl lg:leading-[50px]
+            lg:text-4xl lg:leading-[50px] text-gray-500
           ">
             to solve problems.
           </h3>
           <div className="mt-1 sm:overflow-y-hidden h-max-[5rem] sm:h-[3.4rem] md:h-[4.2rem] lg:h-[5.1rem]">
             <motion.h1 
-              className="font-poppins font-semibold -tracking-tight
+              className="font-poppins font-semibold -tracking-tight text-gray-600
               text-[40px] sm:text-5xl md:text-6xl lg:text-7xl leading-[40px] sm:leading-1
               "
               initial={{
@@ -148,8 +149,8 @@ const Hero = (props: Props) => {
                 y: 0
               }}
               transition={{
-                  duration: 1,
-                  ease: "easeInOut"
+                  duration: 1.5,
+                  ease: [.27, .61, .25, .95]
               }}
             >
               { ((windowSize.width ?? 0) > 500) && (<>Sean Collan Fong</>)}

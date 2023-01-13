@@ -22,9 +22,24 @@ module.exports = {
         'hero': '-3px 3px 30px -5px rgba(216, 178, 110, 0.2)',
         'about': '15px 20px 40px -10px rgba(216, 178, 110, 0.3)',
       },
+      animation: {
+        'circleload': 'circleload 1.6s ease-in-out',
+      },
+      keyframes: {
+        circleload: {
+          '0%': {
+            clipPath: "circle(50% at 50% 50%)"
+          },
+          '99%': {
+            clipPath: "circle(100% at 50% 50%)"
+          },
+          '100%': {
+            clipPath: "none",
+          }
+        }
+      }
     },
   },
-  darkMode: 'media',
   plugins: [
     require('tailwind-scrollbar'),
     function ({ addVariant }) {

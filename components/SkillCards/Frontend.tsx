@@ -60,9 +60,9 @@ const Frontend = (props: Props) => {
           
           {/* Paragraph */}
           <p className="text-lg text-black font-light tracking-wide text-center">
-            Modern problems require modern applications. 
+            Modern problems require modern applications. <br />
             Modern applications use modern frameworks. <br />
-            A very modern solution, indeed.
+            Modern frameworks are the modern solution.
           </p>
         </motion.div>
       )}

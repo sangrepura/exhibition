@@ -17,7 +17,7 @@ import Document, {
         <Html>
           <Head>
           </Head>
-          <body>
+          <body className="scrollbar-none">
             <Main />
             <NextScript />
           </body>
