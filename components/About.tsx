@@ -19,10 +19,10 @@ const About = (props: Props) => {
     const moveY = clientY - window.innerHeight / 2;
     const imgOffset = -0.01;
     const panelOffset = 0.01;
-    imgAnimation.start({
-      x: moveX * imgOffset,
-      y: moveY * imgOffset,
-    })
+    // imgAnimation.start({
+    //   x: moveX * imgOffset,
+    //   y: moveY * imgOffset,
+    // })
     panelAnimation.start({
       x: moveX * panelOffset,
       y: moveY * panelOffset,

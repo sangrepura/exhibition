@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import BackgroundCircles from './BackgroundCircles'
-import { useAnimation, motion } from 'framer-motion'
+import { useAnimation, motion, useInView } from 'framer-motion'
 import useWindowSize from './hooks/useWindowSize'
 
 type Props = {}
@@ -22,8 +22,9 @@ const pathVariants = {
 }
 
 const Hero = (props: Props) => {
-  const imgAnimation = useAnimation();
   const plateAnimation = useAnimation();
+  const sectionRef = useRef(null);
+  const sectionInView = useInView(sectionRef, {once: true});
 
   const windowSize = useWindowSize();
 
@@ -33,12 +34,12 @@ const Hero = (props: Props) => {
     const { clientX, clientY } = e;
     const moveX = clientX - window.innerWidth / 2;
     const moveY = clientY - window.innerHeight / 2;
-    const imgOffset = 0.006;
+    // const imgOffset = 0.006;
     const plateOffset = -0.01;
-    imgAnimation.start({
-      x: moveX * imgOffset,
-      y: moveY * imgOffset,
-    })
+    // imgAnimation.start({
+    //   x: moveX * imgOffset,
+    //   y: moveY * imgOffset,
+    // })
     plateAnimation.start({
       x: moveX * plateOffset,
       y: moveY * plateOffset
@@ -51,9 +52,10 @@ const Hero = (props: Props) => {
       className="relative h-screen flex flex-col items-center justify-center 
       overflow-y-hidden overflow-x-hidden animate-circleload bg-[#eeeeee] 
       svgBackground z-0"
+      ref={sectionRef}
       onMouseMove={e => handleMouseMove(e)}
     >
-      <BackgroundCircles />
+      <BackgroundCircles inView={sectionInView}/>
       <div className="relative mx-auto 
         xl:pt-[3rem] xl:w-[65rem] xl:h-1/3 xl:pl-0
         lg:pt-[10rem] lg:w-[55rem] lg:pl-3
@@ -61,8 +63,7 @@ const Hero = (props: Props) => {
         sm:pt-[15rem] sm:pl-20 sm:w-[90%]
         w-[80%] pt-[15rem]
       ">
-        <motion.div 
-          animate={imgAnimation}
+        <div
           className="z-20 absolute mx-auto rounded-[10px] overflow-hidden
           xl:w-[330px] xl:h-[460px] xl:-top-32 xl:right-[1rem]
           lg:w-[280px] lg:h-[320px] lg:top-[-4rem] lg:right-[5rem] 
@@ -73,11 +74,11 @@ const Hero = (props: Props) => {
           <Image priority src="/images/sean_hero.png" alt="Sean Image" width={330} height={460}
           className="absolute sm:-top-5 md:-top-7 lg:-top-10 xl:top-0" 
           />
-        </motion.div>
+        </div>
         
         <motion.div 
           animate={plateAnimation}
-          className="z-10 absolute bg-[#d7dadf] mx-auto rounded-[10px] drop-shadow-md bg-opacity-60
+          className="z-10 absolute bg-[#d7dadf] mx-auto rounded-[10px] bg-opacity-60
           xl:right-[-1rem] xl:top-[-9.5rem] xl:w-[490px] xl:h-[510px]
           lg:right-[3rem] lg:top-[-6rem] lg:w-[440px] lg:h-[610px]  
           md:right-[1rem] md:top-[-6rem] md:w-[370px] md:h-[530px]  
@@ -85,20 +86,22 @@ const Hero = (props: Props) => {
           w-[250px] h-[560px] right-[4rem] top-[-2rem] 
         "/>
 
-        <motion.div 
-          initial={{
-            opacity: 0,
-            x: -100
-          }}
-          animate={{
-            opacity: 1,
-            x: 0
-          }}
-          transition={{
-              duration: 1.2,
-              ease: [.27, .61, .25, .95]
-          }}
-          className="relative z-30 overflow-x-hidden">
+        <div 
+          // initial={{
+          //   opacity: 0,
+          //   x: -100
+          // }}
+          // animate={{
+          //   opacity: 1,
+          //   x: 0
+          // }}
+          // transition={{
+          //   duration: 1.2,
+          //   ease: [.27, .61, .25, .95]
+          // }}
+          className={"relative z-30 overflow-x-hidden transition-all duration-[1800ms] ease-[cubic-bezier(.27,.61,.25,.95)] " 
+            + (sectionInView ? "" : "opacity-0 translate-x-[-100px]")}
+          >
           <h3 
             className="font-poppins font-light tracking-widest 
             leading-[30px] text-xl
@@ -136,26 +139,14 @@ const Hero = (props: Props) => {
             to solve problems.
           </h3>
           <div className="mt-1 sm:overflow-y-hidden h-max-[5rem] sm:h-[3.4rem] md:h-[4.2rem] lg:h-[5.1rem]">
-            <motion.h1 
-              className="font-poppins font-semibold -tracking-tight text-gray-600
-              text-[40px] sm:text-5xl md:text-6xl lg:text-7xl leading-[40px] sm:leading-1
-              "
-              initial={{
-                opacity: 0,
-                y: 20
-              }}
-              animate={{
-                opacity: 1,
-                y: 0
-              }}
-              transition={{
-                  duration: 1.5,
-                  ease: [.27, .61, .25, .95]
-              }}
+            <h1 
+              className={`font-poppins font-semibold -tracking-tight text-gray-600 \
+              text-[40px] sm:text-5xl md:text-6xl lg:text-7xl leading-[40px] sm:leading-1 transition duration-[1500ms] ease-[cubic-bezier(.27,.61,.25,.95)] \
+              ` + (sectionInView ? "" : "opacity-30 translate-y-[50px]")}
             >
               { ((windowSize.width ?? 0) > 500) && (<>Sean Collan Fong</>)}
               { ((windowSize.width ?? 0) <= 500) && (<>Sean C Fong</>)}
-            </motion.h1>
+            </h1>
           </div>
           <svg 
             className="mr-3 ml-1 
@@ -180,7 +171,7 @@ const Hero = (props: Props) => {
           ">
             Software Developer
           </h2>
-        </motion.div> 
+        </div> 
       </div>        
     </div>
   )
