@@ -23,15 +23,15 @@ module.exports = {
         'about': '15px 20px 40px -10px rgba(216, 178, 110, 0.3)',
       },
       animation: {
-        'circleload': 'circleload 1.6s ease-in-out',
+        'circleload': 'circleload 1.8s ease-in-out',
       },
       keyframes: {
         circleload: {
           '0%': {
-            clipPath: "circle(50% at 50% 50%)"
+            clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)"
           },
           '99%': {
-            clipPath: "circle(100% at 50% 50%)"
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
           },
           '100%': {
             clipPath: "none",

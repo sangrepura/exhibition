@@ -9,7 +9,7 @@ type Props = {}
 
 const Skills = (props: Props) => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.6 })
+  const isInView = useInView(sectionRef, { once: true })
   const [openCard, setOpenCard] = useState(0);
 
   const panelAnimation = useAnimation();
@@ -39,7 +39,7 @@ const Skills = (props: Props) => {
   return (
       <div
         onMouseMove={e => handleMouseMove(e)}
-        className="min-h-[100vh] max-w-9xl relative flex flex-col px-10
+        className="min-h-[130vh] max-w-9xl relative flex flex-col px-10
         justify-center items-center 
         lg:flex-row-reverse
       ">
@@ -74,7 +74,7 @@ const Skills = (props: Props) => {
           }>
             Onions have layers. <br />
             Coders ought to have layers, too. <br />
-            <span className="text-sm lg:text-[18px] italic">Shrek said it first.</span> <br /><br />
+            <span ref={sectionRef} className="text-sm lg:text-[18px] italic">Shrek said it first.</span> <br /><br />
           </p>
         </div>
 
@@ -110,7 +110,6 @@ const Skills = (props: Props) => {
 
       {/* Background plate */}
       <motion.div
-        ref={sectionRef}
         animate={panelAnimation}
         className="-z-10 absolute bg-gradient-to-l from-[rgba(215,218,223,0.5)] to-[rgba(220,220,230,0.15)]
         xl:w-[55rem]
