@@ -30,12 +30,12 @@ const ProjectCard = ({ project }: Props) => {
 
 				{/* Title */}
 				<div>
-					<h5 ref={sectionRef} className={"text-xl font-light italic transition delay-[100ms] duration-[1400ms] " + (isInView ? "opacity-full" : "opacity-0 translate-y-32")}>{subtitle}</h5>
-					<h4 className={"uppercase text-3xl tracking-widest delay-[200ms] transition duration-[1400ms] " + (isInView ? "opacity-full" : "opacity-0 translate-y-32")}>{title}</h4>
+					<h5 ref={sectionRef} className={"text-xl lg:text-2xl font-light italic transition delay-[100ms] duration-[1400ms] " + (isInView ? "opacity-full" : "opacity-0 translate-y-32")}>{subtitle}</h5>
+					<h4 className={"uppercase text-3xl lg:text-[2.75rem] lg:leading-[3rem] tracking-widest delay-[200ms] transition duration-[1400ms] " + (isInView ? "opacity-full" : "opacity-0 translate-y-32")}>{title}</h4>
 				</div>
 				
 				{/* Description */}
-				<p className={"font-light transition delay-[300ms] duration-[1400ms] " + (isInView ? "opacity-full" : "opacity-0 translate-y-32")}>{description}</p>
+				<p className={"font-light transition delay-[300ms] duration-[1400ms] lg:text-lg text-[#333333] " + (isInView ? "opacity-full" : "opacity-0 translate-y-32")}>{description}</p>
 				
 				{/* Github Link */}
 				{ githubLink &&

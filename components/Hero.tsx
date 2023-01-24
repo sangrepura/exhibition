@@ -71,7 +71,7 @@ const Hero = (props: Props) => {
           md:w-[250px] md:h-[270px] md:top-[-4rem] md:right-[3rem] \
           sm:w-[260px] sm:h-[300px] sm:top-[-4rem] sm:right-[6rem] \
           w-[240px] h-[320px] right-[2rem] -top-[6rem] transition duration-[1800ms] ease-[cubic-bezier(.27,.61,.25,.95)] `
-          + (sectionInView ? "opacity-100" : "opacity-30 scale-[95%] -rotate-3")
+          + (sectionInView ? "opacity-100" : "opacity-30 scale-[90%] -rotate-3")
         }
         >
           <Image priority src="/images/sean_hero.png" alt="Sean Image" width={330} height={460}

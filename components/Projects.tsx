@@ -35,7 +35,7 @@ const Projects = ({ projectData = []}: Props) => {
           Productions
         </h3>
         <h4 className={"text-xl font-extralight italic transition delay-[100ms] duration-[1800ms] ease-in-out " + ((showHeader) ? ("opacity-100 translate-y-0 ") : ("opacity-0 translate-y-20 "))}>
-          Let 'em roll!
+          Let them roll!
         </h4>
       </div>
       
