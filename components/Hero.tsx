@@ -15,13 +15,14 @@ const pathVariants = {
     opacity: 1,
     pathLength: 1,
     transition: {
-      duration: 2,
+      duration: 3,
       ease: [.59,.07,.32,.93]
     }
   },
 }
 
 const Hero = (props: Props) => {
+  const imgAnimation = useAnimation();
   const plateAnimation = useAnimation();
   const sectionRef = useRef(null);
   const sectionInView = useInView(sectionRef, {once: true});
@@ -34,12 +35,12 @@ const Hero = (props: Props) => {
     const { clientX, clientY } = e;
     const moveX = clientX - window.innerWidth / 2;
     const moveY = clientY - window.innerHeight / 2;
-    // const imgOffset = 0.006;
+    const imgOffset = 0.008;
     const plateOffset = -0.01;
-    // imgAnimation.start({
-    //   x: moveX * imgOffset,
-    //   y: moveY * imgOffset,
-    // })
+    imgAnimation.start({
+      x: moveX * imgOffset,
+      y: moveY * imgOffset,
+    })
     plateAnimation.start({
       x: moveX * plateOffset,
       y: moveY * plateOffset
@@ -49,9 +50,8 @@ const Hero = (props: Props) => {
 
   return (
     <div 
-      className="relative h-screen flex flex-col items-center justify-center 
-      overflow-y-hidden overflow-x-hidden animate-circleload bg-[#eeeeee] 
-      svgBackground z-0"
+      className="relative min-h-[50rem] h-screen flex flex-col items-center justify-center 
+      overflow-y-hidden overflow-x-hidden z-0"
       ref={sectionRef}
       onMouseMove={e => handleMouseMove(e)}
     >
@@ -63,22 +63,25 @@ const Hero = (props: Props) => {
         sm:pt-[15rem] sm:pl-20 sm:w-[90%]
         w-[80%] pt-[15rem]
       ">
-        <div
-          className="z-20 absolute mx-auto rounded-[10px] overflow-hidden
-          xl:w-[330px] xl:h-[460px] xl:-top-32 xl:right-[1rem]
-          lg:w-[280px] lg:h-[320px] lg:top-[-4rem] lg:right-[5rem] 
-          md:w-[250px] md:h-[270px] md:top-[-4rem] md:right-[3rem] 
-          sm:w-[260px] sm:h-[300px] sm:top-[-4rem] sm:right-[6rem] 
-          w-[240px] h-[320px] right-[2rem] -top-[6rem]
-        ">
+        <motion.div
+          animate={imgAnimation}
+          className={`z-20 absolute mx-auto rounded-[10px] overflow-hidden \
+          xl:w-[330px] xl:h-[460px] xl:-top-32 xl:right-[1rem] \
+          lg:w-[280px] lg:h-[320px] lg:top-[-4rem] lg:right-[5rem] \ 
+          md:w-[250px] md:h-[270px] md:top-[-4rem] md:right-[3rem] \
+          sm:w-[260px] sm:h-[300px] sm:top-[-4rem] sm:right-[6rem] \
+          w-[240px] h-[320px] right-[2rem] -top-[6rem] transition duration-[1800ms] ease-[cubic-bezier(.27,.61,.25,.95)] `
+          + (sectionInView ? "opacity-100" : "opacity-30 scale-[95%] -rotate-3")
+        }
+        >
           <Image priority src="/images/sean_hero.png" alt="Sean Image" width={330} height={460}
           className="absolute sm:-top-5 md:-top-7 lg:-top-10 xl:top-0" 
           />
-        </div>
+        </motion.div>
         
         <motion.div 
           animate={plateAnimation}
-          className="z-10 absolute bg-[#d7dadf] mx-auto rounded-[10px] bg-opacity-60
+          className="z-10 absolute bg-gradient-to-l from-[rgba(215,218,223,0.5)] to-[rgba(220,220,230,0.15)] mx-auto rounded-[10px]
           xl:right-[-1rem] xl:top-[-9.5rem] xl:w-[490px] xl:h-[510px]
           lg:right-[3rem] lg:top-[-6rem] lg:w-[440px] lg:h-[610px]  
           md:right-[1rem] md:top-[-6rem] md:w-[370px] md:h-[530px]  
@@ -87,27 +90,16 @@ const Hero = (props: Props) => {
         "/>
 
         <div 
-          // initial={{
-          //   opacity: 0,
-          //   x: -100
-          // }}
-          // animate={{
-          //   opacity: 1,
-          //   x: 0
-          // }}
-          // transition={{
-          //   duration: 1.2,
-          //   ease: [.27, .61, .25, .95]
-          // }}
-          className={"relative z-30 overflow-x-hidden transition-all duration-[1800ms] ease-[cubic-bezier(.27,.61,.25,.95)] " 
-            + (sectionInView ? "" : "opacity-0 translate-x-[-100px]")}
+          className={`relative z-30 overflow-x-hidden pl-5 -translate-x-5 transition-all delay-[100ms] duration-[2000ms] ease-[cubic-bezier(.27,.61,.25,.95)] ` 
+            + (sectionInView ? "" : "opacity-0 translate-x-[-150px]")}
           >
           <h3 
-            className="font-poppins font-light tracking-widest 
+            className={`font-poppins font-light tracking-widest
             leading-[30px] text-xl
             sm:text-xl md:text-2xl sm:leading-[30px] md:leading-[40px]
-            lg:text-4xl lg:leading-[50px] text-gray-500
-          ">
+            lg:text-4xl lg:leading-[50px] text-gray-500 transition-all delay-[100ms] duration-[1300ms] ease-[cubic-bezier(.27,.61,.25,.95)] ` 
+            + (sectionInView ? "" : "opacity-0 translate-y-[-50px]")}
+          >
             I enjoy using 
             <span className="relative">
               &nbsp;creativity
@@ -131,11 +123,11 @@ const Hero = (props: Props) => {
             </span>
           </h3>
           <h3 
-            className="font-poppins font-light tracking-widest 
+            className={`font-poppins font-light tracking-widest 
             leading-[30px] text-xl
             sm:text-xl md:text-2xl sm:leading-[30px] md:leading-[40px]
-            lg:text-4xl lg:leading-[50px] text-gray-500
-          ">
+            lg:text-4xl lg:leading-[50px] text-gray-500 transition-all duration-[1300ms] ease-[cubic-bezier(.27,.61,.25,.95)] ` 
+            + (sectionInView ? "" : "opacity-0 translate-y-[-50px]")}>
             to solve problems.
           </h3>
           <div className="mt-1 sm:overflow-y-hidden h-max-[5rem] sm:h-[3.4rem] md:h-[4.2rem] lg:h-[5.1rem]">

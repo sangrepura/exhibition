@@ -6,10 +6,9 @@ type Props = {}
 
 const About = (props: Props) => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.6 })
+  const isInView = useInView(sectionRef, { once: true })
 
   const panelAnimation = useAnimation();
-  const imgAnimation = useAnimation();
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!e) {return};
@@ -17,12 +16,7 @@ const About = (props: Props) => {
     const { clientX, clientY } = e;
     const moveX = clientX - window.innerWidth / 2;
     const moveY = clientY - window.innerHeight / 2;
-    const imgOffset = -0.01;
     const panelOffset = 0.01;
-    // imgAnimation.start({
-    //   x: moveX * imgOffset,
-    //   y: moveY * imgOffset,
-    // })
     panelAnimation.start({
       x: moveX * panelOffset,
       y: moveY * panelOffset,
@@ -33,7 +27,7 @@ const About = (props: Props) => {
     // Page section container div
     <div
       onMouseMove={e => handleMouseMove(e)}
-      className="min-h-[100vh] max-w-[150rem] relative flex flex-col px-10
+      className="min-h-screen max-w-[150rem] relative flex flex-col px-10
       justify-evenly mx-auto items-center 
       lg:flex-row-reverse lg:justify-center
       ">
@@ -47,17 +41,18 @@ const About = (props: Props) => {
         sm:w-[40vw] sm:h-[40vw]
         w-[55vw] h-[55vw] 
       ">
-        <motion.div 
-          animate={imgAnimation}
-          className="z-10 absolute -bottom-8 sm:bottom-0 left-0 max-h-[50vh] overflow-hidden rounded-[20px] shadow-about
+        <div
+          className={`z-10 absolute -bottom-8 sm:bottom-0 left-0 max-h-[50vh] overflow-hidden shadow-about
           xl:w-[320px] xl:h-[320px]
           lg:w-[300px] lg:h-[300px]
           md:w-[30vw] md:h-[30vw]
           sm:w-[40vw] sm:h-[40vw]
-          w-[50vw] h-[50vw] opacity-90
-        ">
-          <Image priority src="/images/about_img.png" alt="About Image" width={400} height={400}/>
-        </motion.div>
+          w-[50vw] h-[50vw] opacity-90 transition duration-1000 ` + (isInView ? "opacity-100": "opacity-0 translate-x-20")}
+        >
+          <Image priority src="/images/about_img.png" alt="About Image" width={400} height={400}
+          className="rounded-[20px]"/>
+          <div className="absolute bg-gradient-to-t from-[rgba(228,228,228,0.9)] md:from-[rgba(228,228,228,0.2)] to-[rgba(250,250,250,0)] bottom-0 left-0 w-full h-1/2"/>
+        </div>
       </div>
       {/* Text container div */}
       <div 
@@ -85,7 +80,7 @@ const About = (props: Props) => {
         </div>
 
         {/* Paragraphs */}
-        <div className="pl-5 text-right font-poppins font-light
+        <div ref={sectionRef} className="pl-5 text-right font-poppins font-light
           xl:pl-[7rem]
           lg:text-[26px] lg:leading-[36px] lg:pl-[7rem] 
           sm:text-2xl
@@ -110,7 +105,6 @@ const About = (props: Props) => {
       </div>
 
       <motion.div 
-        ref={sectionRef}
         animate={panelAnimation}
         className="absolute bg-gradient-to-r from-[rgba(215,218,223,0.5)] to-[rgba(220,220,230,0.15)] 
         xl:w-[55rem] xl:ml-[5rem]
@@ -124,13 +118,13 @@ const About = (props: Props) => {
           className={"transition duration-[1500ms] ease-in-out absolute border-[8px] border-slate-400 " +
           "rounded-full h-[500px] w-[500px] " +
           "lg:right-[-20%] lg:top-[5%] md:right-[-20%] md:top-[5%] right-[10%] top-[10%] " +
-          ((isInView) ? ("translate-x-0 translate-y-0 opacity-20") : ("translate-x-32 translate-y-6 opacity-40"))
+          ((isInView) ? ("translate-x-0 translate-y-0 opacity-20") : ("translate-x-32 translate-y-6 opacity-20"))
         }/>
         <div
           className={"transition duration-[1800ms] ease-in-out absolute border-[3px] border-orange-300 "+
           "rounded-full h-[450px] w-[450px] " +
           "lg:right-[-17%] lg:top-[10%] md:right-[-15%] md:top-[9%] right-[16%] top-[14%] " +
-          ((isInView) ? ("translate-x-0 translate-y-0 opacity-30") : ("translate-x-32 translate-y-6 opacity-40"))
+          ((isInView) ? ("translate-x-0 translate-y-0 opacity-30") : ("translate-x-32 translate-y-6 opacity-20"))
         }/>
 
       </motion.div>

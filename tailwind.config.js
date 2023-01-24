@@ -28,10 +28,10 @@ module.exports = {
       keyframes: {
         circleload: {
           '0%': {
-            clipPath: "circle(40% at 50% 50%)"
+            clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)"
           },
           '99%': {
-            clipPath: "circle(100% at 50% 50%)"
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
           },
           '100%': {
             clipPath: "none",

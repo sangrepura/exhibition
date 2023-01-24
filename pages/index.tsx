@@ -5,13 +5,13 @@ import Hero from '../components/Hero'
 import Skills from '../components/Skills'
 import Footer from '../components/Footer'
 import Projects from '../components/Projects'
-import { useInView, motion } from 'framer-motion'
-import { useRef } from 'react'
+import { client } from '../lib/client'
 
+type Props = {
+  projectData: any
+}
 
-export default function Home() {
-  const heroRef = useRef(null);
-  const heroInView = useInView(heroRef);
+export default function Home({ projectData }: Props) {
 
   // For scrollbar:
   // thin scrollbar-thumb-rounded-full 
@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <div
-      className="relative text-gray-800 overflow-x-hidden z-0
+      className="relative text-gray-800 overflow-x-hidden z-0 flex flex-col gap-32 lg:gap-0
       svgBackground
     ">
       <Head>
@@ -34,7 +34,7 @@ export default function Home() {
       <Header/>
 
       {/* Hero */}
-      <section id="hero" ref={heroRef} className="bg-[#ffffff]">
+      <section id="hero">
         <Hero />
       </section>
 
@@ -50,7 +50,7 @@ export default function Home() {
     
       {/* Projects */}
       <section id="projects">
-        <Projects />
+        <Projects projectData={projectData}/>
       </section>
 
       {/* Contact */}
@@ -66,4 +66,20 @@ export default function Home() {
 
     
   )
+}
+
+export const getStaticProps = async () => {
+  const projectQuery = `*[_type == 'portfolioData'] | order(priority asc){
+    title, subtitle, _id, description, featuredImage, githubLink
+  }
+  `;
+
+  const projectData = await client.fetch(projectQuery);
+
+  return {
+    props: {
+      projectData
+    }
+  }
+
 }

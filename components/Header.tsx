@@ -53,7 +53,6 @@ const Header = (props: Props) => {
       } else {
         setShowBack(false);
       }
-        
     });
 });
 
