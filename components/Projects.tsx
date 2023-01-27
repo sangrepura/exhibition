@@ -1,7 +1,7 @@
 import { motion, useInView, useScroll } from 'framer-motion'
 import React, { useEffect, useRef, useState } from 'react'
-import { client } from '../lib/client';
 import ProjectCard from './ProjectCards/ProjectCard';
+import { BsChevronDoubleDown } from 'react-icons/bs'
 
 type Props = {
   projectData: Array<any>
@@ -25,18 +25,22 @@ const Projects = ({ projectData = []}: Props) => {
 
   return (
     <div className="flex flex-col items-center justify-center font-poppins text-center relative overflow-hidden gap-10 lg:gap-20">
-      <div>
+      <div className="flex flex-col items-center relative">
         <h3 ref={sectionRef} 
           className={"w-[100vw] tracking-[0.05em] uppercase font-normal transition duration-[1800ms] ease-in-out " +
           "text-[43px] leading-[50px] sm:text-[60px] sm:leading-[65px] " +
           "right-[-3rem] bottom-[0rem] " +
           ((showHeader) ? ("opacity-100 translate-y-0 ") : ("opacity-0 translate-y-20 "))
         }>
-          Productions
+          Exhibition
         </h3>
         <h4 className={"text-xl font-extralight italic transition delay-[100ms] duration-[1800ms] ease-in-out " + ((showHeader) ? ("opacity-100 translate-y-0 ") : ("opacity-0 translate-y-20 "))}>
-          Let them roll!
+          view the production list
         </h4>
+        <span className={"absolute -bottom-10 transition delay-[200ms] duration-[1800ms] ease-in-out " + ((showHeader) ? ("opacity-100 translate-y-0 ") : ("opacity-0 translate-y-20 "))}>
+          <BsChevronDoubleDown className="text-3xl animate-bounce opacity-25" />
+        </span>
+        
       </div>
       
       {/* Project Content */}
