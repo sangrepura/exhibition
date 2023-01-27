@@ -17,6 +17,7 @@ module.exports = {
         'sunset': '#d8b26e',
         'cloud': '#dad5d2',
         'sea': '#b4c1c5', 
+        'github': '#28a745'
       },
       boxShadow: {
         'hero': '-3px 3px 30px -5px rgba(216, 178, 110, 0.2)',
@@ -36,7 +37,7 @@ module.exports = {
           '100%': {
             clipPath: "none",
           }
-        }
+        },
       }
     },
   },

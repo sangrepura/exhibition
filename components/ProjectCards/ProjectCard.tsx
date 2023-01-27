@@ -1,8 +1,16 @@
-import { useInView } from 'framer-motion';
-import Link from 'next/link';
+import { AnimatePresence, motion, useInView } from 'framer-motion';
 import React, { useRef, useState } from 'react'
+import { PortableText } from '@portabletext/react'
 import { urlFor } from '../../lib/client';
-import { AiFillGithub } from 'react-icons/ai'
+import { AiFillGithub } from 'react-icons/ai';
+import { CgWebsite } from 'react-icons/cg'
+import ProjectLink from './ProjectLink';
+
+const ptComponents = {
+	marks: {
+		strong: ({children}: any) => <strong className="text-xl text-sunburst">{children}</strong>,
+	},
+}
 
 type Props = {
 	project: any
@@ -12,9 +20,7 @@ const ProjectCard = ({ project }: Props) => {
 	const sectionRef = useRef(null);
 	const isInView = useInView(sectionRef, { once: true });
 
-	const [ expandedGitButton, setExpandedGitButton ] = useState(false);
-
-	const {title, subtitle, description, featuredImage, githubLink} = project;
+	const {title, subtitle, description, featuredImage, githubLink, deploymentLink} = project;
 
   return (
     <React.Fragment>
@@ -35,21 +41,33 @@ const ProjectCard = ({ project }: Props) => {
 				</div>
 				
 				{/* Description */}
-				<p className={"font-light transition delay-[300ms] duration-[1400ms] lg:text-lg text-[#333333] " + (isInView ? "opacity-full" : "opacity-0 translate-y-32")}>{description}</p>
+				<div className={"font-light transition delay-[300ms] duration-[1400ms] lg:text-lg text-[#333333] " + (isInView ? "opacity-full" : "opacity-0 translate-y-32")}>
+					<PortableText
+						value={description}
+						components={ptComponents}
+					/>
+				</div>
 				
-				{/* Github Link */}
-				{ githubLink &&
-					<div className={"bg-slate-300 transition delay-[400ms] duration-[1400ms] " + (isInView ? "opacity-full" : "opacity-0 translate-y-32")}>
-						<a href={githubLink}  target='_blank' rel="noreferrer" 
-							className="bg-deep-sea bg-opacity-50 hover:bg-[#28a745] flex items-center gap-3 rounded-lg px-5 py-2 transition duration-200">
-							<AiFillGithub className="text-3xl text-white"/>
-							
-							<span onMouseEnter={() => {setExpandedGitButton(true)}} onMouseLeave={() => {setExpandedGitButton(false)}}
-								className="font-light text-white tracking-wider">{expandedGitButton ? "here's the repo!": "seems legit?"}
-							</span>	
-						</a>
-					</div>
-				}
+				{/* Links */}
+				<div className="flex flex-col md:flex-row justify-center items-center gap-5">
+					{/* Github Link */}
+					{ githubLink &&
+						<ProjectLink 
+							link={githubLink} isInView={isInView} renderIcon={() => <AiFillGithub className="text-3xl text-white"/>}
+							defaultText={"seems legit?"} hoverText={"here's the repo!"}
+							buttonStyles={"hover:bg-green-500"}
+						/>
+					}
+
+					{/* Deployment Link */}
+					{ deploymentLink &&
+						<ProjectLink link={deploymentLink} isInView={isInView} renderIcon={() => <CgWebsite className="text-3xl text-white"/>}
+							defaultText={"view deployment"} hoverText={"check it live!"}
+							buttonStyles={"hover:bg-blue-500"}
+						/>
+					}
+				</div>
+				
 
 				
 
@@ -72,12 +90,12 @@ const ProjectCard = ({ project }: Props) => {
           <div 
             className={"transition duration-[1200ms] absolute border-[8px] border-cloud opacity-30 rounded-full h-[250px] w-[250px] " +
             "left-[50%] bottom-[14%] lg:left-[44%] lg:bottom-[6%] " +
-            ((isInView) ? ("translate-x-0 translate-y-0 opacity-10") : ("translate-x-[70%] translate-y-[70%] opacity-40"))
+            ((isInView) ? ("translate-x-0 translate-y-0 opacity-20") : ("translate-x-[70%] translate-y-[70%] opacity-40"))
           }/>
           <div
             className={"transition duration-[2100ms] absolute border-[5px] border-orange-300 opacity-20 rounded-full h-[400px] w-[400px] " +
-            "left-[10%] top-[10%] lg:left-[38%] lg:bottom-[4%] " +
-            ((isInView) ? ("translate-x-0 translate-y-0 opacity-10") : ("translate-x-[80%] translate-y-[-80%] opacity-40"))
+            "left-[10%] top-[10%] lg:left-[38%] lg:top-[25%] " +
+            ((isInView) ? ("translate-x-0 translate-y-0 opacity-[15%]") : ("translate-x-[50%] translate-y-[-50%] opacity-40"))
           }/>
 			</div>
     </React.Fragment>

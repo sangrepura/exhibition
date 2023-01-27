@@ -129,7 +129,7 @@ const Header = (props: Props) => {
                         }}
                         className="px-2 bg-opacity-60 rounded-br-lg rounded-l-lg bg-cloud md:bg-transparent md:rounded-none"
                       >
-                        <Link href="/#hero" className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-800 md:text-deep-sea font-light leading-8">
+                        <Link href="/#projects" className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-800 md:text-deep-sea font-light leading-8">
                           exhibition
                         </Link>
                       </motion.div>
@@ -146,9 +146,9 @@ const Header = (props: Props) => {
                         }}
                         className="px-2 bg-opacity-60 rounded-br-lg rounded-l-lg bg-cloud md:bg-transparent md:rounded-none"
                       >
-                        <Link href="/#hero" className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-800 md:text-deep-sea font-light leading-8">
+                        <a href="https://bulletin.seancfong.com/"  target='_blank' rel="noreferrer" className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-800 md:text-deep-sea font-light leading-8">
                           bulletin
-                        </Link>
+                        </a>
                       </motion.div>
                     </div>
                     <div className="overflow-hidden">
