@@ -3,7 +3,8 @@ import React, { useRef, useState } from 'react'
 import { PortableText } from '@portabletext/react'
 import { urlFor } from '../../lib/client';
 import { AiFillGithub } from 'react-icons/ai';
-import { CgWebsite } from 'react-icons/cg'
+import { CgWebsite } from 'react-icons/cg';
+import { GiLaurelsTrophy } from 'react-icons/gi'
 import ProjectLink from './ProjectLink';
 
 const ptComponents = {
@@ -20,24 +21,64 @@ const ProjectCard = ({ project }: Props) => {
 	const sectionRef = useRef(null);
 	const isInView = useInView(sectionRef, { once: true });
 
-	const {title, subtitle, description, featuredImage, githubLink, deploymentLink} = project;
+	const {title, subtitle, description, featuredImage, githubLink, deploymentLink, award} = project;
 
   return (
     <React.Fragment>
 			{/* Project Content */}
 			<div className="w-[80%] h-[80%] md:p-10 lg:px-32 z-10 flex flex-col items-center justify-center gap-5 max-w-5xl max-h-3xl">
 				{/* Image */}
-				{featuredImage && (
-					<div className={"aspect-video overflow-hidden w-[110%] md:w-full h-full transition duration-[1400ms] " + (isInView ? "opacity-full" : "scale-[80%] opacity-0 translate-y-32")}>
+				{ featuredImage && (
+					<div className={"relative aspect-video w-[110%] md:w-full h-full transition duration-[1400ms] " + (isInView ? "opacity-full" : "scale-[80%] opacity-[10%] translate-y-32")}>
 						<img src={urlFor(featuredImage)} alt="Project Image" className="rounded-xl object-cover w-full h-full"/>
+						<AnimatePresence>
+							{
+								(award && isInView) && (
+									<>
+										<motion.div 
+											initial={{opacity: 0}}
+											animate={{opacity: 1}}
+											transition={{delay: 0.3, duration: 2}}
+											className="absolute rounded-xl top-0 left-0 w-full h-full bg-gradient-to-b from-[rgba(150,150,150,0.5)] via-[rgba(255,255,255,0)] to-[rgba(255,255,255,0)]"/>
+										<motion.span
+											className="absolute top-3 -left-5 flex items-center gap-3"
+											initial={{y: -50, opacity: 0}}
+											animate={{y: 0, opacity: 1}}
+											transition={{type: 'spring', stiffness: 200, damping: 20, delay: 1}}
+										>										
+											<GiLaurelsTrophy className="text-yellow-500 text-7xl md:text-8xl drop-shadow-award"/>
+											<div className="text-left drop-shadow-md flex flex-col justify-start bg-[#dfdfdf] bg-opacity-90 rounded-lg px-5 py-1">
+												<span className="font-medium tracking-wider uppercase text-lg">
+													{award.organization}
+												</span>
+												<span className="font-light tracking-wider">
+													{award.awardDescription}
+												</span>
+											</div>
+										</motion.span>
+									</>							
+																
+															
+								)
+							}
+						</AnimatePresence>
 					</div>
 				)
 				}
 
 				{/* Title */}
-				<div>
-					<h5 ref={sectionRef} className={"text-xl lg:text-2xl font-light italic transition delay-[100ms] duration-[1400ms] " + (isInView ? "opacity-full" : "opacity-0 translate-y-32")}>{subtitle}</h5>
-					<h4 className={"uppercase text-3xl lg:text-[2.75rem] lg:leading-[3rem] tracking-widest delay-[200ms] transition duration-[1400ms] " + (isInView ? "opacity-full" : "opacity-0 translate-y-32")}>{title}</h4>
+				<div className="flex flex-col items-center">
+					<h5 ref={sectionRef} className={"text-xl lg:text-2xl font-light italic transition delay-[100ms] duration-[1400ms] " + (isInView ? "opacity-full" : "opacity-0 translate-y-32")}>
+						{subtitle}
+					</h5>
+
+					<span className={"relative text-4xl lg:text-[2.75rem] lg:leading-[3rem] tracking-widest flex gap-3 delay-[200ms] transition duration-[1400ms] " + (isInView ? "opacity-full" : "opacity-0 translate-y-32")}>
+						<h4 className="uppercase ">
+							{title}
+						</h4>
+					</span>
+
+
 				</div>
 				
 				{/* Description */}

@@ -69,8 +69,8 @@ export default function Home({ projectData }: Props) {
 }
 
 export const getStaticProps = async () => {
-  const projectQuery = `*[_type == 'portfolioData' && !(_id in path("drafts.**"))] | order(priority asc){
-    title, subtitle, _id, description, featuredImage, githubLink, deploymentLink
+  const projectQuery = `*[_type == 'portfolioData' && isFeatured == true && !(_id in path("drafts.**"))] | order(priority asc){
+    title, subtitle, _id, description, featuredImage, githubLink, deploymentLink, award
   }
   `;
 
