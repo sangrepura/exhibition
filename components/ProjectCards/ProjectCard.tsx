@@ -114,15 +114,15 @@ const ProjectCard = ({ project }: Props) => {
 
 			</div>
 
-			{/* Background Plate */}
-			<div
-				className={`overflow-hidden absolute bg-gradient-to-r from-[rgba(215,218,223,0.5)] to-[rgba(220,220,230,0.15)] rounded-[20px]
-				transition-all delay-100 duration-[1600ms] ease-in-out max-w-5xl max-h-3xl w-[80%] h-full ` + 
-				( isInView 
-					? "" 
-					: "scale-[70%] opacity-40"
-				)}>
-					{/* Plate circles */}
+		{/* Background Plate */}
+		<div
+			className={`overflow-hidden absolute bg-gradient-to-r from-[rgba(215,218,223,0.5)] to-[rgba(220,220,230,0.15)] rounded-[20px]
+			transition-all delay-100 duration-[1600ms] ease-in-out max-w-5xl max-h-3xl w-[80%] h-full ` + 
+			( isInView 
+				? "" 
+				: "scale-[70%] opacity-40"
+			)}>
+				{/* Plate circles */}
           <div 
             className={"transition duration-[1700ms] ease-in-out absolute border-[8px] border-slate-400 rounded-full h-[300px] w-[300px] " +
             "left-[-15%] sm:left-[5%] md:left-[15%] bottom-[20%] lg:left-[20%] lg:bottom-[20%] " +
@@ -138,7 +138,7 @@ const ProjectCard = ({ project }: Props) => {
             "left-[10%] top-[10%] lg:left-[38%] lg:top-[25%] " +
             ((isInView) ? ("translate-x-0 translate-y-0 opacity-[15%]") : ("translate-x-[50%] translate-y-[-50%] opacity-40"))
           }/>
-			</div>
+		</div>
     </React.Fragment>
   )
 }

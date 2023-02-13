@@ -3,7 +3,9 @@ import { motion, AnimatePresence, useScroll } from 'framer-motion';
 import Link from 'next/link';
 import useWindowSize from './hooks/useWindowSize'
 
-type Props = {};
+type Props = {
+  exhibitionScroll: any
+};
 
 const navIconVariants = {
   idle: { rotate: 0 },
@@ -25,7 +27,7 @@ const navIconVariants = {
   }
 };
 
-const Header = (props: Props) => {
+const Header = ({ exhibitionScroll }: Props) => {
   const { scrollYProgress } = useScroll();
   const isBrowser = () => typeof window !== 'undefined';
 
@@ -129,9 +131,15 @@ const Header = (props: Props) => {
                         }}
                         className="px-2 bg-opacity-60 rounded-br-lg rounded-l-lg bg-cloud md:bg-transparent md:rounded-none"
                       >
-                        <Link href="/#projects" className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-800 md:text-deep-sea font-light leading-8">
+                        <span className="cursor-pointer block md:flex font-poppins text-md md:text-lg text-gray-800 md:text-deep-sea font-light leading-8"
+                        onClick={() => {
+                          console.log(exhibitionScroll)
+                          if (!isBrowser()) return;
+                          if (exhibitionScroll - 100 <= 0) return;
+                          window.scrollTo({ top: exhibitionScroll - 100, behavior: 'smooth' });
+                        }}>
                           exhibition
-                        </Link>
+                        </span>
                       </motion.div>
                     </div>
                     <div className="overflow-hidden">

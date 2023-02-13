@@ -24,7 +24,7 @@ const Projects = ({ projectData = []}: Props) => {
   }, [scrollYProgress]);
 
   return (
-    <div className="flex flex-col items-center justify-center font-poppins text-center relative overflow-hidden gap-10 lg:gap-20">
+    <div className="flex flex-col items-center justify-center font-poppins text-center relative overflow-hidden gap-10 lg:gap-20 pb-32">
       <div className="flex flex-col items-center relative">
         <h3 ref={sectionRef} 
           className={"w-[100vw] tracking-[0.05em] uppercase font-normal transition duration-[1800ms] ease-in-out " +
