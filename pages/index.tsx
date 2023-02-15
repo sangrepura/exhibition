@@ -6,16 +6,19 @@ import Skills from '../components/Skills'
 import Footer from '../components/Footer'
 import Projects from '../components/Projects'
 import { client } from '../lib/client'
+import Vault from '../components/Vault'
+import { useEffect, useRef, useState } from 'react'
 
 type Props = {
   projectData: any
 }
 
 export default function Home({ projectData }: Props) {
+  const [exhibitionScroll, setExhibitionScroll] = useState(0);
 
-  // For scrollbar:
-  // thin scrollbar-thumb-rounded-full 
-  // scrollbar-thumb-[#cccccc] scrollbar-track-[#eeeeee] hover:scrollbar-thumb-[#aaaaaa]
+  useEffect(() => {
+    console.log(exhibitionScroll)
+  }, [exhibitionScroll])
 
   return (
     <div
@@ -31,7 +34,7 @@ export default function Home({ projectData }: Props) {
       </Head>
 
       {/* Header */}
-      <Header/>
+      <Header exhibitionScroll={exhibitionScroll}/>
 
       {/* Hero */}
       <section id="hero">
@@ -49,8 +52,19 @@ export default function Home({ projectData }: Props) {
       </section>
     
       {/* Projects */}
-      <section id="projects">
+      <section id="projects" 
+        ref={ exhibitionRef => { 
+          if (!exhibitionRef) return
+
+          setExhibitionScroll(exhibitionRef.offsetTop)
+        }}
+      >
         <Projects projectData={projectData}/>
+      </section>
+
+      {/* Vault */}
+      <section id="vault">
+        <Vault />
       </section>
 
       {/* Contact */}
