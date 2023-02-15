@@ -1,9 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
 import VaultCircles from './VaultCircles';
 import { useInView } from 'framer-motion'
-import { useKeyPress } from './hooks/useKeyPress';
 
 type Props = {}
+
+const validCombos = {
+    test: ['Enter'],
+    konami: ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
+}
+
+const validKeys = ['ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'Enter', '?'];
+
 
 const Vault = (props: Props) => {
     const [ loadAnimation, setLoadAnimation ] = useState(null);
@@ -24,8 +31,9 @@ const Vault = (props: Props) => {
 
     useEffect(() => {
         console.log(keyCombo)
-        if (keyCombo.toString() == ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a', 'Enter'].toString()) {
+        if (keyCombo.toString() == validCombos.konami.toString()) {
             setIsUnlocked(true);
+            canType.current = false
         }
     }, [keyCombo])
 
@@ -34,10 +42,13 @@ const Vault = (props: Props) => {
         if (canType.current) {
             if ( key == 'Backspace') {
                 setKeyCombo(keyCombo => keyCombo.slice(0, -1))
-            } else {
+            } else if ( validKeys.includes(key) ) {
                 setKeyCombo(keyCombo => [...keyCombo, e.key])
             }
-            e.preventDefault();      
+
+            if ( ['ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight' ].includes(key) ) {
+                e.preventDefault();   
+            }
         }
     }
 
@@ -57,7 +68,7 @@ const Vault = (props: Props) => {
         <div className="w-[80%] h-[80%] overflow-hidden relative md:p-10 lg:px-32 z-10 flex flex-col items-center justify-center gap-5 max-w-5xl max-h-3xl">       
             {/* Back plate */}
             <div
-                className={`overflow-hidden absolute bg-gradient-radial to-[rgba(215,218,223,0.5)] from-[rgba(220,220,230,0)] rounded-[20px]
+                className={`overflow-hidden absolute bg-gradient-radial to-[rgba(215,218,223,0.6)] from-[rgba(220,220,230,0)] rounded-[20px]
                 transition-all delay-100 duration-[1600ms] ease-in-out max-w-5xl max-h-3xl w-full h-full ` + 
                 ( loadAnimation 
                     ? "" 
@@ -70,14 +81,18 @@ const Vault = (props: Props) => {
                 className="w-full h-full relative"
             />   
             {
-                isUnlocked
-                ? <div>UNLOCK</div>
-                : <VaultCircles setLoadAnimation={setLoadAnimation} loadAnimation={loadAnimation} isInView={isInView} keyCombo={keyCombo}/>
+                isUnlocked &&
+                <div className="w-full h-full flex justify-center items-center absolute">
+                    <p className="text-2xl font-light text-gray-500 tracking-wider">The Vault is currently empty (for now).</p>
+                </div>
             }
+
+            <VaultCircles isUnlocked={isUnlocked} setLoadAnimation={setLoadAnimation} loadAnimation={loadAnimation} isInView={isInView} keyCombo={keyCombo} setKeyCombo={setKeyCombo}/>
+ 
             
         </div>
-        <div className="absolute text-center top-[5%] left-1/2 translate-x-[-50%] w-full z-10">
-            <h3 className={"semibold tracking-[0.05em] uppercase font-normal transition duration-[1800ms] ease-in-out text-4xl sm:text-6xl " + ( loadAnimation 
+        <div className="absolute text-center top-[7%] sm:top-[5%] left-1/2 translate-x-[-50%] w-full z-10">
+            <h3 className={"semibold tracking-[0.05em] uppercase font-normal transition duration-[1800ms] ease-in-out text-5xl sm:text-6xl " + ( loadAnimation 
                     ? "" 
                     : "translate-y-20 opacity-0"
                 )}>
