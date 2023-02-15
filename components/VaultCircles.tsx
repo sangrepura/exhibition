@@ -105,17 +105,18 @@ const VaultCircles = ({ isUnlocked, setLoadAnimation, loadAnimation, isInView, k
                     )
                 }                                
                 </AnimatePresence>
-                
-                <AnimatePresence>            
+          
                 {
                     keyCombo.slice(0,-1).map((key: string, index: number) => {
-                        return <p className="text-7xl md:text-8xl text-gray-500 mx-5">{renderKey(key)}</p>
+                        return <p key={index} className="text-7xl md:text-8xl text-gray-500 mx-5">{renderKey(key)}</p>
                     })
                 }
+
+                <AnimatePresence>  
                 {
                     keyCombo.length > 0 && 
                         <motion.p 
-                        initial={{ scale: 1.2 }}
+                        initial={{ scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1, transition: { type: "spring" }}}
                         className="text-blue-500 text-7xl md:text-8xl mx-5">
                             {renderKey(keyCombo[keyCombo.length - 1])}
